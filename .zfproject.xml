@@ -12,6 +12,9 @@
           <actionMethod actionName="index"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Regular">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory enabled="false"/>
@@ -24,6 +27,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Regular">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
@@ -55,6 +61,9 @@
       <testPHPUnitConfigFile/>
       <testApplicationDirectory>
         <testApplicationBootstrapFile/>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile/>
+        </testApplicationControllerDirectory>
       </testApplicationDirectory>
       <testLibraryDirectory>
         <testLibraryBootstrapFile/>
