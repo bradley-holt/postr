@@ -14,6 +14,10 @@
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="Regular">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="get"/>
+          <actionMethod actionName="post"/>
+          <actionMethod actionName="put"/>
+          <actionMethod actionName="delete"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
@@ -30,6 +34,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Regular">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Regular">
+            <viewScriptFile forActionName="get"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Regular">
+            <viewScriptFile forActionName="post"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Regular">
+            <viewScriptFile forActionName="put"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Regular">
+            <viewScriptFile forActionName="delete"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
