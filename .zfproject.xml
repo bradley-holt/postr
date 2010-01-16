@@ -12,7 +12,7 @@
           <actionMethod actionName="index"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
-        <controllerFile controllerName="Regular">
+        <controllerFile controllerName="Entry">
           <actionMethod actionName="index"/>
           <actionMethod actionName="get"/>
           <actionMethod actionName="post"/>
@@ -32,19 +32,19 @@
           <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="error"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Regular">
+          <viewControllerScriptsDirectory forControllerName="Entry">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Regular">
+          <viewControllerScriptsDirectory forControllerName="Entry">
             <viewScriptFile forActionName="get"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Regular">
+          <viewControllerScriptsDirectory forControllerName="Entry">
             <viewScriptFile forActionName="post"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Regular">
+          <viewControllerScriptsDirectory forControllerName="Entry">
             <viewScriptFile forActionName="put"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Regular">
+          <viewControllerScriptsDirectory forControllerName="Entry">
             <viewScriptFile forActionName="delete"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>

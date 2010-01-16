@@ -1,6 +1,6 @@
 <?php
 
-class RegularController extends Zend_Controller_Action
+class EntryController extends Zend_Controller_Action
 {
 
     public function init()
