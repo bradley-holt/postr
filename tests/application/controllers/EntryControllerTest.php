@@ -1,7 +1,5 @@
 <?php
 
-require_once 'PHPUnit/Framework/TestCase.php';
-
 class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 {
 
