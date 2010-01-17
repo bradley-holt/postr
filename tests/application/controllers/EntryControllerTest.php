@@ -7,7 +7,8 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function setUp()
     {
-        /* Setup Routine */
+        $this->bootstrap = APPLICATION_PATH . '/../tests/application/bootstrap.php';
+        parent::setUp();
     }
 
     public function tearDown()
