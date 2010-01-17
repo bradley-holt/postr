@@ -26,6 +26,9 @@
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <modelFile modelName="Entry"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Entry"/>
+        </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
