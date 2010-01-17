@@ -20,7 +20,9 @@
           <actionMethod actionName="delete"/>
         </controllerFile>
       </controllersDirectory>
-      <formsDirectory enabled="false"/>
+      <formsDirectory>
+        <formFile formName="Entry"/>
+      </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <modelFile modelName="Entry"/>
