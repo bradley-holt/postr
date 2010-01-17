@@ -2,7 +2,7 @@
 <projectProfile>
   <projectDirectory>
     <projectProfileFile/>
-    <applicationDirectory classNamePrefix="Application_">
+    <applicationDirectory classNamePrefix="Postr_">
       <apisDirectory enabled="false"/>
       <configsDirectory>
         <applicationConfigFile type="ini"/>
