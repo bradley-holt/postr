@@ -29,6 +29,7 @@
         <dbTableDirectory>
           <dbTableFile dbTableName="Entry"/>
         </dbTableDirectory>
+        <modelFile modelName="EntryRepository"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
