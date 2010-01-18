@@ -17,6 +17,31 @@ class Postr_Model_EntryTest extends PHPUnit_Framework_TestCase
         /* Tear Down Routine */
     }
 
+    public function testEntryIsIdenticalToEntryWithSameId()
+    {
+        $this->_entry->setId(42);
+        $entryWithSameId = new Postr_Model_Entry(42);
+        $this->assertTrue(
+            $this->_entry->isIdenticalTo($entryWithSameId)
+        );
+    }
+
+    public function testEntryIsEqualToEntryWithSamePropertiesAndDifferentId()
+    {
+        $now = new Zend_Date();
+        $this->_entry
+            ->setTitle('Test Entry')
+            ->setContent('Test Content')
+            ->setSummary('Test Summary')
+            ->setUpdated($now)
+            ->setPublished($now)
+        ;
+        $entryWithDifferentId = clone $this->_entry;
+        $this->assertTrue(
+            $this->_entry->isEqualTo($entryWithDifferentId)
+        );
+    }
+
     public function testSetAndGetId()
     {
         $value = 371;

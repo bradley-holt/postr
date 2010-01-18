@@ -33,6 +33,41 @@ class Postr_Model_Entry
     private $_published;
 
     /**
+     * Construct new Entry
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function __construct($id = null)
+    {
+        if (null !== $id) {
+            $this->setId($id);
+        }
+    }
+
+    /**
+     * Is Identical To
+     *
+     * @param Postr_Model_Entry $entry
+     * @return boolean
+     */
+    public function isIdenticalTo(Postr_Model_Entry $entry)
+    {
+        return $this->getId() == $entry->getId();
+    }
+
+    public function isEqualTo(Postr_Model_Entry $entry)
+    {
+        return
+            $this->getTitle() == $entry->getTitle() &&
+            $this->getContent() == $entry->getContent() &&
+            $this->getSummary() == $entry->getSummary() &&
+            $this->getUpdated()->equals($entry->getUpdated()) &&
+            $this->getPublished()->equals($entry->getPublished())
+        ;
+    }
+
+    /**
      * Get ID
      *
      * @return integer
