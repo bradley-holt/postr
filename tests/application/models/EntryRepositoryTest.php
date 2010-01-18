@@ -30,6 +30,7 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
+        Zend_Db_Table::getDefaultAdapter()->closeConnection();
         parent::tearDown();
     }
 
