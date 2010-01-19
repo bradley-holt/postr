@@ -98,5 +98,62 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             $this->_testEntry->getPublished()->get(Zend_Date::DATETIME_SHORT)
         );
     }
+
+    public function testGetActionContainsCorrectEntryTitle()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQueryContentContains(
+            '.hentry .entry-title',
+            $this->_testEntry->getTitle()
+        );
+    }
+
+    public function testGetActionContainsCorrectEntryContent()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQueryContentContains(
+            '.hentry .entry-content',
+            $this->_testEntry->getContent()
+        );
+    }
+
+    public function testGetActionContainsCorrectEntrySummary()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQueryContentContains(
+            '.hentry .entry-summary',
+            $this->_testEntry->getSummary()
+        );
+    }
+
+    public function testGetActionContainsCorrectEntryUpdated()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQuery(
+            '.hentry abbr.updated[title="' . $this->_testEntry->getUpdated()->get(Zend_Date::ISO_8601) . '"]'
+        );
+        $this->assertQueryContentContains(
+            '.hentry abbr.updated',
+            $this->_testEntry->getUpdated()->get(Zend_Date::DATETIME_SHORT)
+        );
+    }
+
+    public function testGetActionContainsCorrectEntryPublished()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQuery(
+            '.hentry abbr.published[title="' . $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601) . '"]'
+        );
+        $this->assertQueryContentContains(
+            '.hentry abbr.published',
+            $this->_testEntry->getPublished()->get(Zend_Date::DATETIME_SHORT)
+        );
+    }
+
 }
 

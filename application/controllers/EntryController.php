@@ -31,7 +31,9 @@ class EntryController extends Zend_Controller_Action
 
     public function getAction()
     {
-        // action body
+        $id = $this->_getParam('id');
+        $entry = $this->_entryRepository->getEntry($id);
+        $this->view->entry = $entry;
     }
 
     public function postAction()
