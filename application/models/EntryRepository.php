@@ -48,6 +48,11 @@ class Postr_Model_EntryRepository
         $this->_entryTable = $entryTable;
     }
 
+    /**
+     * Index Of Entries
+     *
+     * @return array
+     */
     public function indexOfEntries()
     {
         $dbAdapter = $this->_entryTable->getAdapter();

@@ -1,1 +1,18 @@
-<br /><br /><center>View script for controller <b>Entry</b> and script/action name <b>get</b></center>
+<?
+/* @var $entry Postr_Model_Entry */
+$entry = $this->entry;
+?>
+<h2>Entry Get</h2>
+<div class="hentry">
+    <h3 class="entry-title"><?= $this->escape($entry->getTitle()) ?></h3>
+    <p class="entry-content"><?= $this->escape($entry->getContent()) ?></p>
+    <p class="entry-summary"><?= $this->escape($entry->getSummary()) ?></p>
+    <abbr
+        class="updated"
+        title="<?= $this->escape($entry->getUpdated()->get(Zend_Date::ISO_8601)) ?>"
+    ><?= $this->escape($entry->getUpdated()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
+    <abbr
+        class="published"
+        title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
+    ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
+</div>
