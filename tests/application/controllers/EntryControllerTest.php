@@ -90,7 +90,6 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
     {
         $this->_entryRepository->postEntry($this->_testEntry);
         $this->dispatch('/entry');
-        die($this->getResponse()->getBody());
         $this->assertQuery(
             '.hfeed .hentry abbr.published[title="' . $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601) . '"]'
         );
