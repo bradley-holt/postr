@@ -8,14 +8,20 @@ class EntryController extends Zend_Controller_Action
     private $_entryRepository;
 
     /**
+     * @var Zend_Controller_Router_Interface
+     */
+    private $_router;
+
+    /**
      * Init
      *
      * @return void
      */
     public function init()
     {
-        //TODO: Pass this in so that it can be substitued
+        //TODO: Pass these in so that it can be substitued
         $this->_entryRepository = new Postr_Model_EntryRepository();
+        $this->_router = $this->getFrontController()->getRouter();
     }
 
     /**
@@ -38,7 +44,28 @@ class EntryController extends Zend_Controller_Action
 
     public function postAction()
     {
-        // action body
+        $title = $this->_getParam('title');
+        $content = $this->_getParam('content');
+        $summary = $this->_getParam('summary');
+        $updated = new Zend_Date($this->_getParam('updated'), Zend_Date::ISO_8601);
+        $published = new Zend_Date($this->_getParam('published'), Zend_Date::ISO_8601);
+        $entry = new Postr_Model_Entry();
+        $entry
+            ->setTitle($title)
+            ->setContent($content)
+            ->setSummary($summary)
+            ->setUpdated($updated)
+            ->setPublished($published)
+        ;
+        $this->_entryRepository->postEntry($entry);
+        $this->_redirect(
+            $this->_router->assemble(
+                array(
+                    'action'    => 'get',
+                    'id'        => $entry->getId(),
+                )
+            )
+        );
     }
 
     public function putAction()
