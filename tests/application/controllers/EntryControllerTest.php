@@ -227,5 +227,14 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->dispatch('/entry/delete/id/' . $this->_testEntry->getId());
         $this->assertRedirect('/entry');
     }
+
+    public function testDeleteActionEntryIsDeleted()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/delete/id/' . $this->_testEntry->getId());
+        $id = $this->getRequest()->getParam('id');
+        $deletedEntry = $this->_entryRepository->getEntry($id);
+        $this->assertNull($deletedEntry);
+    }
 }
 
