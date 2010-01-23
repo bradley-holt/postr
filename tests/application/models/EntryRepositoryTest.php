@@ -104,4 +104,3 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
         $this->assertNull($deletedEntry);
     }
 }
-

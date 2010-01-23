@@ -2,7 +2,6 @@
 
 class Postr_Form_Entry extends Zend_Form
 {
-
     public function init()
     {
         $titleElement = new Zend_Form_Element_Text('title');
@@ -36,7 +35,4 @@ class Postr_Form_Entry extends Zend_Form
         ;
         $this->addElement($submitElement);
     }
-
-
 }
-

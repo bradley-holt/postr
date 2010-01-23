@@ -211,4 +211,3 @@ class Postr_Model_Entry
         return $this;
     }
 }
-

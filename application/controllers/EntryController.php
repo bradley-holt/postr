@@ -110,15 +110,4 @@ class EntryController extends Zend_Controller_Action
             )
         );
     }
-
-
 }
-
-
-
-
-
-
-
-
-

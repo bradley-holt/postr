@@ -102,4 +102,3 @@ class Postr_Model_EntryTest extends PHPUnit_Framework_TestCase
         );
     }
 }
-
