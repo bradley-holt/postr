@@ -205,6 +205,22 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertRedirectRegex('%/entry/get/id/\b\d+\b%');
     }
 
+    public function testPutActionEntryIsCorrect()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->getRequest()->setParams(
+            $this->_getTestEntryParams()
+        );
+        $this->dispatch('/entry/put/id/' . $this->_testEntry->getId());
+        $id = $this->getRequest()->getParam('id');
+        $putEntry = $this->_entryRepository->getEntry($id);
+        $this->assertTrue(
+            $this->_testEntry->isEqualTo(
+                $putEntry
+            )
+        );
+    }
+
     public function testDeleteActionRedirectsToIndexAction()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
