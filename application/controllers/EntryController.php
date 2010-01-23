@@ -70,7 +70,29 @@ class EntryController extends Zend_Controller_Action
 
     public function putAction()
     {
-        // action body
+        $id = $this->_getParam('id');
+        $title = $this->_getParam('title');
+        $content = $this->_getParam('content');
+        $summary = $this->_getParam('summary');
+        $updated = new Zend_Date($this->_getParam('updated'), Zend_Date::ISO_8601);
+        $published = new Zend_Date($this->_getParam('published'), Zend_Date::ISO_8601);
+        $entry = $this->_entryRepository->getEntry($id);
+        $entry
+            ->setTitle($title)
+            ->setContent($content)
+            ->setSummary($summary)
+            ->setUpdated($updated)
+            ->setPublished($published)
+        ;
+        $this->_entryRepository->putEntry($entry);
+        $this->_redirect(
+            $this->_router->assemble(
+                array(
+                    'action'    => 'get',
+                    'id'        => $entry->getId(),
+                )
+            )
+        );
     }
 
     public function deleteAction()
