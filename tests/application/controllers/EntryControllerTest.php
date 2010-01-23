@@ -12,6 +12,22 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
      */
     private $_entryRepository;
 
+    /**
+     * Get Test Entry Params
+     *
+     * @return array
+     */
+    private function _getTestEntryParams()
+    {
+        return array(
+            'title'     => $this->_testEntry->getTitle(),
+            'content'   => $this->_testEntry->getContent(),
+            'summary'   => $this->_testEntry->getSummary(),
+            'updated'   => $this->_testEntry->getUpdated()->get(Zend_Date::ISO_8601),
+            'published' => $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601),
+        );
+    }
+
     public function setUp()
     {
         include APPLICATION_PATH . '/../scripts/load.sqlite.php';
@@ -158,13 +174,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
     public function testPostActionRedirectsToGetAction()
     {
         $this->getRequest()->setParams(
-            array(
-                'title'     => $this->_testEntry->getTitle(),
-                'content'   => $this->_testEntry->getContent(),
-                'summary'   => $this->_testEntry->getSummary(),
-                'updated'   => $this->_testEntry->getUpdated()->get(Zend_Date::ISO_8601),
-                'published' => $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601),
-            )
+            $this->_getTestEntryParams()
         );
         $this->dispatch('/entry/post');
         $this->assertRedirectRegex('%/entry/get/id/\b\d+\b%');
