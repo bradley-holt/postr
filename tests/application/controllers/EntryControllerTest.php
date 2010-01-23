@@ -180,6 +180,21 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertRedirectRegex('%/entry/get/id/\b\d+\b%');
     }
 
+    public function testPostActionEntryIsCorrect()
+    {
+        $this->getRequest()->setParams(
+            $this->_getTestEntryParams()
+        );
+        $this->dispatch('/entry/post');
+        $id = $this->getRequest()->getParam('id');
+        $postedEntry = $this->_entryRepository->getEntry($id);
+        $this->assertTrue(
+            $this->_testEntry->isEqualTo(
+                $postedEntry
+            )
+        );
+    }
+
     public function testPutActionRedirectsToGetAction()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
@@ -188,6 +203,13 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
         $this->dispatch('/entry/put/id/' . $this->_testEntry->getId());
         $this->assertRedirectRegex('%/entry/get/id/\b\d+\b%');
+    }
+
+    public function testDeleteActionRedirectsToIndexAction()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/delete/id/' . $this->_testEntry->getId());
+        $this->assertRedirect('/entry');
     }
 }
 

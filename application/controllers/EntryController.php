@@ -58,6 +58,7 @@ class EntryController extends Zend_Controller_Action
             ->setPublished($published)
         ;
         $this->_entryRepository->postEntry($entry);
+        $this->_setParam('id', $entry->getId());
         $this->_redirect(
             $this->_router->assemble(
                 array(
@@ -97,7 +98,17 @@ class EntryController extends Zend_Controller_Action
 
     public function deleteAction()
     {
-        // action body
+        $id = $this->_getParam('id');
+        $entry = $this->_entryRepository->getEntry($id);
+        $this->_entryRepository->deleteEntry($entry);
+        $this->_redirect(
+            $this->_router->assemble(
+                array(
+                    'action'    => 'index',
+                    'id'        => null,
+                )
+            )
+        );
     }
 
 
