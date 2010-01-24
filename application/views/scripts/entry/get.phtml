@@ -5,20 +5,47 @@ $entry = $this->entry;
 <h2>Entry Get</h2>
 <div class="hentry">
     <h3 class="entry-title"><?= $this->escape($entry->getTitle()) ?></h3>
-    <p class="entry-content"><?= $this->escape($entry->getContent()) ?></p>
-    <p class="entry-summary"><?= $this->escape($entry->getSummary()) ?></p>
-    <abbr
-        class="updated"
-        title="<?= $this->escape($entry->getUpdated()->get(Zend_Date::ISO_8601)) ?>"
-    ><?= $this->escape($entry->getUpdated()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
-    <abbr
-        class="published"
-        title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
-    ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
-    <a
-        href="<?= $this->url(array()) ?>"
-        rel="bookmark"
-    >permalink</a>
+    <div class="entry-date">
+        <abbr
+            class="published"
+            title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
+        ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
+    </div>
+    <div class="entry-content"><?= $this->escape($entry->getContent()) ?></div>
+    <dl class="entry-meta">
+        <dt>By</dt>
+        <dd><span class="author vcard">
+            <a
+                class="url fn n"
+                href="<?= $this->url(array(), null, true) ?>"
+            >Anonymous</a></span></dd>
+        <dt>Updated on</dt>
+        <dd><abbr
+            class="updated"
+            title="<?= $this->escape($entry->getUpdated()->get(Zend_Date::ISO_8601)) ?>"
+        ><?= $this->escape($entry->getUpdated()->get(Zend_Date::DATETIME_SHORT)) ?></abbr></dd>
+        <dt>Tagged</dt>
+        <dd>
+            <ul>
+                <li><a 
+                    href="<?= $this->url(
+                        array(
+                            'controller'    => 'tag',
+                            'action'        => 'get',
+                            'id'            => 'foo',
+                        )
+                    ) ?>"
+                    rel="tag">foo</a>
+                </li>
+            </ul>
+        </dd>
+        <dt>Permalink to</dt>
+        <dd><a
+            href="<?= $this->url(array()) ?>"
+            title="Permalink to <?= $this->escape($entry->getTitle()) ?>"
+            rel="bookmark"
+        ><?= $this->escape($entry->getTitle()) ?></a></dd>
+    </dl>
 </div>
 <?= $this->entryDeleteForm ?>
 <?= $this->entryForm ?>

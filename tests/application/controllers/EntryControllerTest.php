@@ -69,16 +69,6 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
-    public function testIndexActionContainsCorrectEntryContent()
-    {
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->dispatch('/entry');
-        $this->assertQueryContentContains(
-            '.hfeed .hentry .entry-content',
-            $this->_testEntry->getContent()
-        );
-    }
-
     public function testIndexActionContainsCorrectEntrySummary()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
@@ -144,16 +134,6 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertQueryContentContains(
             '.hentry .entry-content',
             $this->_testEntry->getContent()
-        );
-    }
-
-    public function testGetActionContainsCorrectEntrySummary()
-    {
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
-        $this->assertQueryContentContains(
-            '.hentry .entry-summary',
-            $this->_testEntry->getSummary()
         );
     }
 
