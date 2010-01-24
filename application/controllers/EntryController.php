@@ -141,6 +141,17 @@ class EntryController extends Zend_Controller_Action
                 )
             );
         }
+        $entryForm
+            ->setMethod('post')
+            ->setAction(
+                $this->_router->assemble(
+                    array(
+                        'action'    => 'post',
+                    )
+                )
+            )
+        ;
+        $this->view->entryForm = $entryForm;
     }
 
     /**
@@ -179,6 +190,17 @@ class EntryController extends Zend_Controller_Action
                 )
             );
         }
+        $entryForm
+            ->setMethod('post')
+            ->setAction(
+                $this->_router->assemble(
+                    array(
+                        'action'    => 'put',
+                    )
+                )
+            )
+        ;
+        $this->view->entryForm = $entryForm;
     }
 
     /**
