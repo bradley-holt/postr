@@ -183,6 +183,18 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
+    public function testGetActionContainsEntryForm()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->assertQuery(
+            'form.entry[method="post"]'
+        );
+        $this->assertQuery(
+            'form.entry[action="/entry/put/id/' . $this->_testEntry->getId() . '"]'
+        );
+    }
+
     public function testPostActionRedirectsToGetAction()
     {
         $this->getRequest()->setParams(

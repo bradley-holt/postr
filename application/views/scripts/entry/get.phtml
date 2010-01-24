@@ -16,3 +16,4 @@ $entry = $this->entry;
         title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
     ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
 </div>
+<?= $this->entryForm ?>
