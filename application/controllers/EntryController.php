@@ -68,6 +68,9 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $entry = $this->_entryRepository->getEntry($id);
+        if (null === $entry) {
+            throw new Zend_Controller_Dispatcher_Exception();
+        }
         $entryForm = new Postr_Form_Entry();
         $now = new Zend_Date();
         $entryForm
@@ -148,6 +151,10 @@ class EntryController extends Zend_Controller_Action
     public function putAction()
     {
         $id = $this->_getParam('id');
+        $entry = $this->_entryRepository->getEntry($id);
+        if (null === $entry) {
+            throw new Zend_Controller_Dispatcher_Exception();
+        }
         $entryForm = new Postr_Form_Entry();
         if ($entryForm->isValid($this->_getAllParams())) {
             $title = $entryForm->getValue('title');
@@ -155,7 +162,6 @@ class EntryController extends Zend_Controller_Action
             $summary = $entryForm->getValue('summary');
             $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::ISO_8601);
             $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::ISO_8601);
-            $entry = $this->_entryRepository->getEntry($id);
             $entry
                 ->setTitle($title)
                 ->setContent($content)
@@ -184,6 +190,9 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $entry = $this->_entryRepository->getEntry($id);
+        if (null === $entry) {
+            throw new Zend_Controller_Dispatcher_Exception();
+        }
         $this->_entryRepository->deleteEntry($entry);
         $this->_redirect(
             $this->_router->assemble(

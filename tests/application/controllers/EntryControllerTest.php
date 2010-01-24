@@ -195,6 +195,12 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
+    public function testGetActionWithNonExistentIdReturns404()
+    {
+        $this->dispatch('/entry/get/id/100');
+        $this->assertResponseCode(404);
+    }
+
     public function testPostActionRedirectsToGetAction()
     {
         $this->getRequest()->setParams(
@@ -245,6 +251,15 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
+    public function testPutActionWithNonExistentIdReturns404()
+    {
+        $this->getRequest()->setParams(
+            $this->_getTestEntryParams()
+        );
+        $this->dispatch('/entry/put/id/100');
+        $this->assertResponseCode(404);
+    }
+
     public function testDeleteActionRedirectsToIndexAction()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
@@ -259,5 +274,11 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $id = $this->getRequest()->getParam('id');
         $deletedEntry = $this->_entryRepository->getEntry($id);
         $this->assertNull($deletedEntry);
+    }
+
+    public function testDeleteActionWithNonExistentIdReturns404()
+    {
+        $this->dispatch('/entry/delete/id/100');
+        $this->assertResponseCode(404);
     }
 }
