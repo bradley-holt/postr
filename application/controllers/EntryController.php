@@ -72,8 +72,20 @@ class EntryController extends Zend_Controller_Action
                 )
             )
         ;
+        $entryDeleteForm = new Postr_Form_EntryDelete();
+        $entryDeleteForm
+            ->setMethod('post')
+            ->setAction(
+                $this->_router->assemble(
+                    array(
+                        'action'    => 'delete',
+                    )
+                )
+            )
+        ;
         $this->view->entry = $entry;
         $this->view->entryForm = $entryForm;
+        $this->view->entryDeleteForm = $entryDeleteForm;
     }
 
     /**
