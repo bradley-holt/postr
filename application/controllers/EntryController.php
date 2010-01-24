@@ -23,6 +23,7 @@ class EntryController extends Zend_Controller_Action
      */
     public function init()
     {
+        $this->_helper->redirector->setPrependBase(false);
         //TODO: Pass these in so that it can be substitued
         $this->_entryRepository = new Postr_Model_EntryRepository();
         $this->_router = $this->getFrontController()->getRouter();
