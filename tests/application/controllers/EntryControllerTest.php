@@ -115,6 +115,15 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
+    public function testIndexActionContainsEntryForm()
+    {
+        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->dispatch('/entry');
+        $this->assertQuery(
+            'form.entry'
+        );
+    }
+
     public function testGetActionContainsCorrectEntryTitle()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
