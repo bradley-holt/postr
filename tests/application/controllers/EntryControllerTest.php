@@ -120,7 +120,10 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->_entryRepository->postEntry($this->_testEntry);
         $this->dispatch('/entry');
         $this->assertQuery(
-            'form.entry'
+            'form.entry[method="post"]'
+        );
+        $this->assertQuery(
+            'form.entry[action="/entry/post"]'
         );
     }
 

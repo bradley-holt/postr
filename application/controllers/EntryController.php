@@ -37,6 +37,16 @@ class EntryController extends Zend_Controller_Action
     {
         $entries = $this->_entryRepository->indexOfEntries();
         $entryForm = new Postr_Form_Entry();
+        $entryForm
+            ->setMethod('post')
+            ->setAction(
+                $this->_router->assemble(
+                    array(
+                        'action'    => 'post',
+                    )
+                )
+            )
+        ;
         $this->view->entries = $entries;
         $this->view->entryForm = $entryForm;
     }
