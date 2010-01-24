@@ -50,8 +50,8 @@ class EntryController extends Zend_Controller_Action
             )
             ->populate(
                 array(
-                    'updated'   => $now->get(Zend_Date::ISO_8601),
-                    'published' => $now->get(Zend_Date::ISO_8601),
+                    'updated'   => $now->get(Zend_Date::DATETIME_SHORT),
+                    'published' => $now->get(Zend_Date::DATETIME_SHORT),
                 )
             )
         ;
@@ -87,8 +87,8 @@ class EntryController extends Zend_Controller_Action
                     'title'     => $entry->getTitle(),
                     'content'   => $entry->getContent(),
                     'summary'   => $entry->getSummary(),
-                    'updated'   => $now->get(Zend_Date::ISO_8601),
-                    'published' => $entry->getPublished()->get(Zend_Date::ISO_8601),
+                    'updated'   => $now->get(Zend_Date::DATETIME_SHORT),
+                    'published' => $entry->getPublished()->get(Zend_Date::DATETIME_SHORT),
                 )
             )
         ;
@@ -120,8 +120,8 @@ class EntryController extends Zend_Controller_Action
             $title = $entryForm->getValue('title');
             $content = $entryForm->getValue('content');
             $summary = $entryForm->getValue('summary');
-            $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::ISO_8601);
-            $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::ISO_8601);
+            $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::DATETIME_SHORT);
+            $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::DATETIME_SHORT);
             $entry = new Postr_Model_Entry();
             $entry
                 ->setTitle($title)
@@ -160,8 +160,8 @@ class EntryController extends Zend_Controller_Action
             $title = $entryForm->getValue('title');
             $content = $entryForm->getValue('content');
             $summary = $entryForm->getValue('summary');
-            $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::ISO_8601);
-            $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::ISO_8601);
+            $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::DATETIME_SHORT);
+            $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::DATETIME_SHORT);
             $entry
                 ->setTitle($title)
                 ->setContent($content)
