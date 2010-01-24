@@ -14,6 +14,8 @@ class Postr_Form_Entry extends Zend_Form
         $titleElement = new Zend_Form_Element_Text('title');
         $titleElement
             ->setLabel('Title')
+            ->setRequired(true)
+            ->addValidator('StringLength', false, array(0, 255))
         ;
         $this->addElement($titleElement);
         $contentElement = new Zend_Form_Element_Textarea('content');
@@ -29,11 +31,14 @@ class Postr_Form_Entry extends Zend_Form
         $updatedElement = new Zend_Form_Element_Text('updated');
         $updatedElement
             ->setLabel('Updated')
+            ->setRequired(true)
+            ->addValidator('Date', false, array(Zend_Date::DATETIME_SHORT))
         ;
         $this->addElement($updatedElement);
         $publishedElement = new Zend_Form_Element_Text('published');
         $publishedElement
             ->setLabel('Published')
+            ->addValidator('Date', false, array(Zend_Date::DATETIME_SHORT))
         ;
         $this->addElement($publishedElement);
         $submitElement = new Zend_Form_Element_Submit('submit');
