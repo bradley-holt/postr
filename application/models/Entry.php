@@ -68,8 +68,8 @@ class Postr_Model_Entry
             $this->getTitle() == $entry->getTitle() &&
             $this->getContent() == $entry->getContent() &&
             $this->getSummary() == $entry->getSummary() &&
-            $this->getUpdated()->equals($entry->getUpdated()) &&
-            $this->getPublished()->equals($entry->getPublished())
+            $this->getUpdated()->equals($entry->getUpdated(), Zend_Date::DATETIME_SHORT) &&
+            $this->getPublished()->equals($entry->getPublished(), Zend_Date::DATETIME_SHORT)
         ;
     }
 
