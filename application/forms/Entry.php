@@ -10,6 +10,7 @@ class Postr_Form_Entry extends Zend_Form
 {
     public function init()
     {
+        $this->setAttrib('class', 'entry');
         $titleElement = new Zend_Form_Element_Text('title');
         $titleElement
             ->setLabel('Title')
