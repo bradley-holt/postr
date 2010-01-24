@@ -38,6 +38,7 @@ class EntryController extends Zend_Controller_Action
     {
         $entries = $this->_entryRepository->indexOfEntries();
         $entryForm = new Postr_Form_Entry();
+        $now = new Zend_Date();
         $entryForm
             ->setMethod('post')
             ->setAction(
@@ -45,6 +46,12 @@ class EntryController extends Zend_Controller_Action
                     array(
                         'action'    => 'post',
                     )
+                )
+            )
+            ->populate(
+                array(
+                    'updated'   => $now->get(Zend_Date::ISO_8601),
+                    'published' => $now->get(Zend_Date::ISO_8601),
                 )
             )
         ;
@@ -62,6 +69,7 @@ class EntryController extends Zend_Controller_Action
         $id = $this->_getParam('id');
         $entry = $this->_entryRepository->getEntry($id);
         $entryForm = new Postr_Form_Entry();
+        $now = new Zend_Date();
         $entryForm
             ->setMethod('post')
             ->setAction(
@@ -69,6 +77,15 @@ class EntryController extends Zend_Controller_Action
                     array(
                         'action'    => 'put',
                     )
+                )
+            )
+            ->populate(
+                array(
+                    'title'     => $entry->getTitle(),
+                    'content'   => $entry->getContent(),
+                    'summary'   => $entry->getSummary(),
+                    'updated'   => $now->get(Zend_Date::ISO_8601),
+                    'published' => $entry->getPublished()->get(Zend_Date::ISO_8601),
                 )
             )
         ;
