@@ -15,6 +15,10 @@ $entry = $this->entry;
         class="published"
         title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
     ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
+    <a
+        href="<?= $this->url(array()) ?>"
+        rel="bookmark"
+    >permalink</a>
 </div>
 <?= $this->entryDeleteForm ?>
 <?= $this->entryForm ?>

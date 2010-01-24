@@ -5,7 +5,14 @@
 <div class="hfeed">
 <? foreach($this->entries as $entry): ?>
     <div class="hentry">
-        <h3 class="entry-title"><?= $this->escape($entry->getTitle()) ?></h3>
+        <h3 class="entry-title">
+            <a
+                href="<?= $this->url(array('action' => 'get', 'id' => $entry->getId())) ?>"
+                rel="bookmark"
+            >
+                <?= $this->escape($entry->getTitle()) ?>
+            </a>
+        </h3>
         <p class="entry-content"><?= $this->escape($entry->getContent()) ?></p>
         <p class="entry-summary"><?= $this->escape($entry->getSummary()) ?></p>
         <abbr
