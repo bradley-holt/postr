@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Entry
+ *
+ * @category    Postr
+ * @package     Postr_Model
+ */
 class Postr_Model_Entry
 {
     /**

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Entry Form
+ *
+ * @category    Postr
+ * @package     Postr_Form
+ */
 class Postr_Form_Entry extends Zend_Form
 {
     public function init()

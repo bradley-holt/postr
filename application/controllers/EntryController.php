@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Entry Controller
+ *
+ */
 class EntryController extends Zend_Controller_Action
 {
     /**
@@ -35,6 +39,11 @@ class EntryController extends Zend_Controller_Action
         $this->view->entries = $entries;
     }
 
+    /**
+     * Get Action
+     *
+     * @return void
+     */
     public function getAction()
     {
         $id = $this->_getParam('id');
@@ -42,6 +51,11 @@ class EntryController extends Zend_Controller_Action
         $this->view->entry = $entry;
     }
 
+    /**
+     * Post Action
+     *
+     * @return void
+     */
     public function postAction()
     {
         $entryForm = new Postr_Form_Entry();
@@ -72,6 +86,11 @@ class EntryController extends Zend_Controller_Action
         }
     }
 
+    /**
+     * Put Action
+     *
+     * @return void
+     */
     public function putAction()
     {
         $id = $this->_getParam('id');
@@ -102,6 +121,11 @@ class EntryController extends Zend_Controller_Action
         }
     }
 
+    /**
+     * Delete Action
+     *
+     * @return void
+     */
     public function deleteAction()
     {
         $id = $this->_getParam('id');
