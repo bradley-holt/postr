@@ -131,6 +131,9 @@ class Postr_Model_Entry
         if (!$asHtml) {
             return $this->_content;
         }
+        if (0 == strlen($this->_content)) {
+            return '';
+        }
         $textile = Zend_Markup::factory('Textile');
         return $textile->render($this->_content);
     }
@@ -157,6 +160,9 @@ class Postr_Model_Entry
     {
         if (!$asHtml) {
             return $this->_summary;
+        }
+        if (0 == strlen($this->_summary)) {
+            return '';
         }
         $textile = Zend_Markup::factory('Textile');
         return $textile->render($this->_summary);
