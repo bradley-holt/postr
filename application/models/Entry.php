@@ -123,11 +123,16 @@ class Postr_Model_Entry
     /**
      * Get Content
      *
+     * @param boolean $asHtml
      * @return string
      */
-    public function getContent()
+    public function getContent($asHtml = false)
     {
-        return $this->_content;
+        if (!$asHtml) {
+            return $this->_content;
+        }
+        $textile = Zend_Markup::factory('Textile');
+        return $textile->render($this->_content);
     }
 
     /**
@@ -145,11 +150,16 @@ class Postr_Model_Entry
     /**
      * Get Summary
      *
+     * @param boolean $asHtml
      * @return string
      */
-    public function getSummary()
+    public function getSummary($asHtml = false)
     {
-        return $this->_summary;
+        if (!$asHtml) {
+            return $this->_summary;
+        }
+        $textile = Zend_Markup::factory('Textile');
+        return $textile->render($this->_summary);
     }
 
     /**

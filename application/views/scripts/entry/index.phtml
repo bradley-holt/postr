@@ -17,7 +17,7 @@
                 title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
             ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
         </div>
-        <div class="entry-summary"><?= $this->escape($entry->getSummary()) ?></div>
+        <div class="entry-summary"><?= $entry->getSummary(true) ?></div>
         <dl class="entry-meta">
             <dt>By</dt>
             <dd><span class="author vcard">

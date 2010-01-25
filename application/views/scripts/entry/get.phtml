@@ -11,7 +11,7 @@ $entry = $this->entry;
             title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
         ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
     </div>
-    <div class="entry-content"><?= $this->escape($entry->getContent()) ?></div>
+    <div class="entry-content"><?= $entry->getContent(true) ?></div>
     <dl class="entry-meta">
         <dt>By</dt>
         <dd><span class="author vcard">
