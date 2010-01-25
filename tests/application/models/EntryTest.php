@@ -72,6 +72,14 @@ class Postr_Model_EntryTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testGetEmptyContentAsHtml()
+    {
+        $this->assertEquals(
+            '',
+            $this->_entry->getContent(true)
+        );
+    }
+
     public function testSetAndGetSummary()
     {
         $value = 'Test entry summary.';
@@ -79,6 +87,14 @@ class Postr_Model_EntryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $value,
             $this->_entry->getSummary()
+        );
+    }
+
+    public function testGetEmptySummaryAsHtml()
+    {
+        $this->assertEquals(
+            '',
+            $this->_entry->getSummary(true)
         );
     }
 
