@@ -16,6 +16,7 @@ class ErrorController extends Zend_Controller_Action
                 break;
             default:
                 // application error
+                $this->view->headTitle()->prepend('Application Error');
                 $this->getResponse()->setHttpResponseCode(500);
                 $this->view->message = 'Application error';
                 break;
@@ -31,6 +32,7 @@ class ErrorController extends Zend_Controller_Action
 
     public function error404Action()
     {
+        $this->view->headTitle()->prepend('404 Not Found');
         $this->getResponse()->setHttpResponseCode(404);
     }
 }

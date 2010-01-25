@@ -27,6 +27,7 @@ class EntryController extends Zend_Controller_Action
         //TODO: Pass these in so that it can be substitued
         $this->_entryRepository = new Postr_Model_EntryRepository();
         $this->_router = $this->getFrontController()->getRouter();
+        $this->view->headTitle()->prepend('Entry');
     }
 
     /**
@@ -38,6 +39,7 @@ class EntryController extends Zend_Controller_Action
     {
         $page = $this->_getParam('page', 1);
         $count = $this->_getParam('count', 5);
+        $this->view->headTitle()->prepend('Index');
         $entries = $this->_entryRepository->indexOfEntries();
         $entries
             ->setCurrentPageNumber($page)
@@ -73,6 +75,7 @@ class EntryController extends Zend_Controller_Action
     public function getAction()
     {
         $id = $this->_getParam('id');
+        $this->view->headTitle()->prepend('Get');
         $entry = $this->_entryRepository->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
@@ -122,6 +125,7 @@ class EntryController extends Zend_Controller_Action
     public function postAction()
     {
         $entryForm = new Postr_Form_Entry();
+        $this->view->headTitle()->prepend('Post');
         if ($entryForm->isValid($this->_getAllParams())) {
             $title = $entryForm->getValue('title');
             $content = $entryForm->getValue('content');
@@ -168,6 +172,7 @@ class EntryController extends Zend_Controller_Action
     public function putAction()
     {
         $id = $this->_getParam('id');
+        $this->view->headTitle()->prepend('Put');
         $entry = $this->_entryRepository->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
@@ -217,6 +222,7 @@ class EntryController extends Zend_Controller_Action
     public function deleteAction()
     {
         $id = $this->_getParam('id');
+        $this->view->headTitle()->prepend('Delete');
         $entry = $this->_entryRepository->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
