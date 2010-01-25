@@ -1,6 +1,10 @@
-This is a demo blogging application that allows users to post text entries,
-images, quotes, links, conversations, videos, and audio. It is developed as an
-example Zend Framework application to be used during presentations.
+This is a demo blogging application that will allow users to post text entries,
+images, quotes, links, conversations, videos, and audio. Currently only the
+basic text entries functionality is implemented. It is developed as an example
+Zend Framework application for the January 28, 2010 meeting of the Burlington,
+VT PHP Users Group.
+
+http://btvphpug-2010-01.eventbrite.com/
 
 Installation
 ============
