@@ -35,6 +35,21 @@ Alternatively, you can fork this project on GitHub and add whatever features
 you want:
 http://github.com/bradley-holt/postr
 
+Zend Framework Components
+=========================
+
+Zend Framework components used include:
+
+ * Zend_Tool
+ * Zend_Application
+ * Zend_Layout
+ * Model–View–Controller (MVC) components
+ * Zend_Test
+ * Zend_Form
+ * Zend_Db_Table
+ * Zend_Date
+ * Zend_Markup
+
 LICENSE
 =======
 
