@@ -36,7 +36,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $this->_testEntry = new Postr_Model_Entry();
         $this->_testEntry
             ->setTitle('Test Entry')
-            ->setContent('Test entry with' . PHP_EOL . 'multiple lines.')
+            ->setContent('Test entry content.')
             ->setSummary('Test entry summary.')
             ->setUpdated($now)
             ->setPublished($now)
