@@ -1,0 +1,28 @@
+<div class="paginator">
+    <p class="showing-count">Showing <?= $this->firstItemNumber; ?> - <?= $this->lastItemNumber; ?> of <?= $this->totalItemCount; ?></p>
+    <ul class="navigation">
+        <li><a<?=
+isset($this->previous) ? ' href="' . $this->url(
+    array (
+        'page'      => $this->previous,
+        'count'     => $this->itemCountPerPage,
+    )
+) . '"' : ' class="inactive"' ?>>&lt; Previous</a></li>
+<? foreach ($this->pagesInRange as $page): ?>
+        <li><a<?=
+    $page != $this->current ? ' href="' . $this->url(
+        array (
+            'page'      => $page,
+            'count'     => $this->itemCountPerPage
+        )
+    ) . '"'  : ' class="inactive current"' ?>><?= $page ?></a></li>
+<? endforeach; ?>
+        <li><a<?=
+isset($this->next) ? ' href="' . $this->url(
+    array (
+        'page'      => $this->next,
+        'count'     => $this->itemCountPerPage
+    )
+) . '"'  : ' class="inactive"' ?>>Next &gt;</a></li>
+    </ul>
+</div>

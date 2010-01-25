@@ -76,19 +76,15 @@ class Postr_Model_EntryRepository
     /**
      * Index Of Entries
      *
-     * @return array
+     * @return Zend_Paginator
      */
     public function indexOfEntries()
     {
-        $dbAdapter = $this->_entryTable->getAdapter();
-        $dbAdapter->beginTransaction();
-        $entryRowset = $this->_entryTable->fetchAll();
-        $entries = array();
-        foreach ($entryRowset as $entryRow) {
-            $entries[] = $this->createEntryFromRow($entryRow);
-        }
-        $dbAdapter->commit();
-        return $entries;
+        $entrySelect = $this->_entryTable->select();
+        $paginator = new Zend_Paginator(
+            new Postr_Model_EntryPaginatorAdapter($entrySelect, $this)
+        );
+        return $paginator;
     }
 
     /**

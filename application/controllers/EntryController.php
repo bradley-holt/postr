@@ -36,7 +36,13 @@ class EntryController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+        $page = $this->_getParam('page', 1);
+        $count = $this->_getParam('count', 5);
         $entries = $this->_entryRepository->indexOfEntries();
+        $entries
+            ->setCurrentPageNumber($page)
+            ->setItemCountPerPage($count)
+        ;
         $entryForm = new Postr_Form_Entry();
         $now = new Zend_Date();
         $entryForm

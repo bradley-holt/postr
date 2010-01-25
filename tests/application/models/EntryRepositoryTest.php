@@ -42,7 +42,7 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
         $entries = $this->_entryRepository->indexOfEntries();
         $this->assertEquals(
             3,
-            count($entries)
+            $entries->getTotalItemCount()
         );
     }
 
