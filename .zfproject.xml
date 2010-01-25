@@ -31,6 +31,7 @@
           <dbTableFile dbTableName="Entry"/>
         </dbTableDirectory>
         <modelFile modelName="EntryRepository"/>
+        <modelFile modelName="EntryPaginatorAdapter"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>

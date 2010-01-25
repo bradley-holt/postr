@@ -43,7 +43,7 @@ class Postr_Model_EntryRepository
      * @param Zend_Db_Table_Row_Abstract $entryRow
      * @return Postr_Model_Entry
      */
-    protected function _createEntryFromRow(Zend_Db_Table_Row_Abstract $entryRow)
+    public function createEntryFromRow(Zend_Db_Table_Row_Abstract $entryRow)
     {
         $updated = new Zend_Date($entryRow->updated, Zend_Date::ISO_8601);
         $published = new Zend_Date($entryRow->published, Zend_Date::ISO_8601);
@@ -85,7 +85,7 @@ class Postr_Model_EntryRepository
         $entryRowset = $this->_entryTable->fetchAll();
         $entries = array();
         foreach ($entryRowset as $entryRow) {
-            $entries[] = $this->_createEntryFromRow($entryRow);
+            $entries[] = $this->createEntryFromRow($entryRow);
         }
         $dbAdapter->commit();
         return $entries;
@@ -106,7 +106,7 @@ class Postr_Model_EntryRepository
         if (null === $entryRow) {
             return null;
         }
-        return $this->_createEntryFromRow($entryRow);
+        return $this->createEntryFromRow($entryRow);
     }
 
     /**
