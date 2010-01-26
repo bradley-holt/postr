@@ -3,7 +3,9 @@
 <head>
 <?= $this->headTitle() ?>
 <?= $this->headMeta() ?>
-<?= $this->headLink() ?>
+<?= $this->headLink()
+        ->appendStylesheet($this->baseUrl('/css/reset-screen.css'), 'screen')
+?>
 <?= $this->headScript() ?>
 </head>
 <body>
