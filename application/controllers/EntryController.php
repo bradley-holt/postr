@@ -63,8 +63,11 @@ class EntryController extends Zend_Controller_Action
             ->setAction(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'post',
-                    )
+                        'action'        => 'post',
+                        'controller'    => 'entry',
+                    ),
+                    null,
+                    true
                 )
             )
             ->populate(
@@ -113,8 +116,12 @@ class EntryController extends Zend_Controller_Action
             ->setAction(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'put',
-                    )
+                        'action'        => 'put',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
                 )
             )
             ->populate(
@@ -158,9 +165,12 @@ class EntryController extends Zend_Controller_Action
             $this->_redirect(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'get',
-                        'id'        => $entry->getId(),
-                    )
+                        'action'        => 'get',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
                 )
             );
         }
@@ -169,8 +179,11 @@ class EntryController extends Zend_Controller_Action
             ->setAction(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'post',
-                    )
+                        'action'        => 'post',
+                        'controller'    => 'entry',
+                    ),
+                    null,
+                    true
                 )
             )
         ;
@@ -208,9 +221,12 @@ class EntryController extends Zend_Controller_Action
             $this->_redirect(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'get',
-                        'id'        => $entry->getId(),
-                    )
+                        'action'        => 'get',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
                 )
             );
         }
@@ -219,8 +235,12 @@ class EntryController extends Zend_Controller_Action
             ->setAction(
                 $this->_router->assemble(
                     array(
-                        'action'    => 'put',
-                    )
+                        'action'        => 'put',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
                 )
             )
         ;
@@ -244,9 +264,11 @@ class EntryController extends Zend_Controller_Action
         $this->_redirect(
             $this->_router->assemble(
                 array(
-                    'action'    => 'index',
-                    'id'        => null,
-                )
+                    'action'        => 'index',
+                    'controller'    => 'entry',
+                ),
+                null,
+                true
             )
         );
     }

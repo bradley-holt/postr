@@ -33,7 +33,9 @@ $entry = $this->entry;
                             'controller'    => 'tag',
                             'action'        => 'get',
                             'id'            => 'foo',
-                        )
+                        ),
+                        null,
+                        true
                     ) ?>"
                     rel="tag">foo</a>
                 </li>
@@ -41,16 +43,40 @@ $entry = $this->entry;
         </dd>
         <dt>Permalink to</dt>
         <dd><a
-            href="<?= $this->url(array()) ?>"
+            href="<?= $this->url(
+                array(
+                    'action'        => 'get',
+                    'controller'    => 'entry',
+                    'id'            => $entry->getId(),
+                ),
+                null,
+                true
+            ) ?>"
             title="Permalink to <?= $this->escape($entry->getTitle()) ?>"
             rel="bookmark"
         ><?= $this->escape($entry->getTitle()) ?></a></dd>
     </dl>
     <ul class="actions">
-        <li><a href="<?= $this->url(array('action' => 'edit')) ?>">Edit</a></li>
+        <li><a href="<?= $this->url(
+            array(
+                'action'        => 'edit',
+                'controller'    => 'entry',
+                'id'            => $entry->getId(),
+            ),
+            null,
+            true
+        ) ?>">Edit</a></li>
         <li><form
                 method="post"
-                action="<?= $this->url(array('action' => 'delete')) ?>"
+                action="<?= $this->url(
+                    array(
+                        'action'        => 'delete',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
+                ) ?>"
             ><input name="delete" id="delete" value="Delete" type="submit">
             </form>
         </li>

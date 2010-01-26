@@ -7,7 +7,15 @@
     <div class="hentry">
         <h3 class="entry-title">
             <a
-                href="<?= $this->url(array('action' => 'get', 'id' => $entry->getId())) ?>"
+                href="<?= $this->url(
+                    array(
+                        'action'        => 'get',
+                        'controller'    => 'entry',
+                        'id'            => $entry->getId(),
+                    ),
+                    null,
+                    true
+                ) ?>"
                 title="Permalink to <?= $this->escape($entry->getTitle()) ?>"
                 rel="bookmark"
             ><?= $this->escape($entry->getTitle()) ?></a></h3>
@@ -39,7 +47,9 @@
                                 'controller'    => 'tag',
                                 'action'        => 'get',
                                 'id'            => 'foo',
-                            )
+                            ),
+                            null,
+                            true
                         ) ?>"
                         rel="tag">foo</a>
                     </li>
