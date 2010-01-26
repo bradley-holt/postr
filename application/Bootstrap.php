@@ -35,7 +35,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                 'controller'    => 'entry',
                 'pages'         => array(
                     array(
+                        'label'         => 'New',
+                        'id'            => 'entry-new',
+                        'action'        => 'new',
+                        'controller'    => 'entry',
+                    ),
+                    array(
                         'action'        => 'get',
+                        'controller'    => 'entry',
+                        'visible'       => false,
+                    ),
+                    array(
+                        'action'        => 'edit',
                         'controller'    => 'entry',
                         'visible'       => false,
                     ),

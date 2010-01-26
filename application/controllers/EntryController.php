@@ -45,6 +45,17 @@ class EntryController extends Zend_Controller_Action
             ->setCurrentPageNumber($page)
             ->setItemCountPerPage($count)
         ;
+        $this->view->entries = $entries;
+    }
+
+    /**
+     * New Action
+     *
+     * @return void
+     */
+    public function newAction()
+    {
+        $this->view->headTitle()->prepend('New');
         $entryForm = new Postr_Form_Entry();
         $now = new Zend_Date();
         $entryForm
@@ -63,7 +74,6 @@ class EntryController extends Zend_Controller_Action
                 )
             )
         ;
-        $this->view->entries = $entries;
         $this->view->entryForm = $entryForm;
     }
 
@@ -76,6 +86,22 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $this->view->headTitle()->prepend('Get');
+        $entry = $this->_entryRepository->getEntry($id);
+        if (null === $entry) {
+            throw new Zend_Controller_Dispatcher_Exception();
+        }
+        $this->view->entry = $entry;
+    }
+
+    /**
+     * Edit Action
+     *
+     * @return void
+     */
+    public function editAction()
+    {
+        $id = $this->_getParam('id');
+        $this->view->headTitle()->prepend('Edit');
         $entry = $this->_entryRepository->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
@@ -101,20 +127,7 @@ class EntryController extends Zend_Controller_Action
                 )
             )
         ;
-        $entryDeleteForm = new Postr_Form_EntryDelete();
-        $entryDeleteForm
-            ->setMethod('post')
-            ->setAction(
-                $this->_router->assemble(
-                    array(
-                        'action'    => 'delete',
-                    )
-                )
-            )
-        ;
-        $this->view->entry = $entry;
         $this->view->entryForm = $entryForm;
-        $this->view->entryDeleteForm = $entryDeleteForm;
     }
 
     /**

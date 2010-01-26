@@ -106,10 +106,10 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
-    public function testIndexActionContainsEntryForm()
+    public function testNewActionContainsEntryForm()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
-        $this->dispatch('/entry');
+        $this->dispatch('/entry/new');
         $this->assertQuery(
             'form.entry[method="post"]'
         );
@@ -164,22 +164,22 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
     }
 
-    public function testGetActionContainsEntryForm()
+    public function testGetActionWithNonExistentIdReturns404()
+    {
+        $this->dispatch('/entry/get/id/100');
+        $this->assertResponseCode(404);
+    }
+
+    public function testEditActionContainsEntryForm()
     {
         $this->_entryRepository->postEntry($this->_testEntry);
-        $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
+        $this->dispatch('/entry/edit/id/' . $this->_testEntry->getId());
         $this->assertQuery(
             'form.entry[method="post"]'
         );
         $this->assertQuery(
             'form.entry[action="/entry/put/id/' . $this->_testEntry->getId() . '"]'
         );
-    }
-
-    public function testGetActionWithNonExistentIdReturns404()
-    {
-        $this->dispatch('/entry/get/id/100');
-        $this->assertResponseCode(404);
     }
 
     public function testPostActionRedirectsToGetAction()

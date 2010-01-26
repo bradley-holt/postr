@@ -46,7 +46,13 @@ $entry = $this->entry;
             rel="bookmark"
         ><?= $this->escape($entry->getTitle()) ?></a></dd>
     </dl>
+    <ul class="actions">
+        <li><a href="<?= $this->url(array('action' => 'edit')) ?>">Edit</a></li>
+        <li><form
+                method="post"
+                action="<?= $this->url(array('action' => 'delete')) ?>"
+            ><input name="delete" id="delete" value="Delete" type="submit">
+            </form>
+        </li>
+    </ul>
 </div>
-<?= $this->entryDeleteForm ?>
-<?= $this->entryForm ?>
-<?= $this->render('textile-quickref.phtml') ?>
