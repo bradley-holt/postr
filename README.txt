@@ -55,6 +55,7 @@ Zend Framework components used include:
  * Zend_Markup
  * Zend_Paginator
  * Zend_Navigation
+ * Controller Plugins
 
 LICENSE
 =======
