@@ -12,4 +12,4 @@ CREATE TABLE entry (
     published DATETIME NOT NULL
 );
 
-CREATE INDEX "id" ON "entry" ("id");
+CREATE INDEX "entry_id" ON "entry" ("id");
