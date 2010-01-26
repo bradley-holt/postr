@@ -13,3 +13,17 @@ CREATE TABLE entry (
 );
 
 CREATE INDEX "entry_id" ON "entry" ("id");
+
+
+--
+-- Definition of table `entry_tag`
+--
+
+CREATE TABLE entry_tag (
+    entry_id INTEGER NOT NULL,
+    tag VARCHAR(255) NOT NULL,
+    PRIMARY KEY (entry_id, tag)
+);
+
+CREATE INDEX "entry_tag_entry_id" ON "entry_tag" ("entry_id");
+CREATE INDEX "entry_tag_tag" ON "entry_tag" ("tag");

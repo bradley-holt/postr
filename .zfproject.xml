@@ -29,6 +29,7 @@
         <modelFile modelName="Entry"/>
         <dbTableDirectory>
           <dbTableFile dbTableName="Entry"/>
+          <dbTableFile dbTableName="EntryTag"/>
         </dbTableDirectory>
         <modelFile modelName="EntryRepository"/>
         <modelFile modelName="EntryPaginatorAdapter"/>
