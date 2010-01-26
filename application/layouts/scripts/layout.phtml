@@ -7,13 +7,15 @@
 <?= $this->headScript() ?>
 </head>
 <body>
-    <h1>Postr</h1>
+<h1>Postr</h1>
+<div id="content">
 <?= $this->layout()->content; ?>
-<?= $this->navigation()->menu() ?>
-<a href="http://framework.zend.com/"><img
-    src="<?= $this->baseUrl('/images/PoweredBy_ZF_4LightBG.png') ?>"
-    border="0"
-    alt="Powered By Zend Framework"
-></a>
+</div>
+<div id="header">
+<?= $this->render('header.phtml') ?>
+</div>
+<div id="footer">
+<?= $this->render('footer.phtml') ?>
+</div>
 </body>
 </html>
