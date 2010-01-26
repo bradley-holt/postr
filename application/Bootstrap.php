@@ -17,4 +17,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'paginator.phtml'
         );
     }
+
+    protected function _initNavigation()
+    {
+        $this->bootstrap('frontController');
+        $pages = array(
+            array(
+                'label'         => 'Home',
+                'id'            => 'index',
+                'action'        => 'index',
+                'controller'    => 'index',
+            ),
+            array(
+                'label'         => 'Entries',
+                'id'            => 'entry',
+                'action'        => 'index',
+                'controller'    => 'entry',
+            ),
+        );
+        $resource = new Zend_Application_Resource_Navigation(
+            array(
+                'pages' => $pages,
+            )
+        );
+        $resource->setBootstrap($this);
+        return $resource->init();
+    }
 }

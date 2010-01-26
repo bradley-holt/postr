@@ -54,6 +54,7 @@ Zend Framework components used include:
  * Zend_Date
  * Zend_Markup
  * Zend_Paginator
+ * Zend_Navigation
 
 LICENSE
 =======
