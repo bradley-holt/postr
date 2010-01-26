@@ -47,6 +47,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function tearDown()
     {
+        Zend_Db_Table::getDefaultAdapter()->closeConnection();
         parent::tearDown();
     }
 
