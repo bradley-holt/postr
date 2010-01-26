@@ -33,6 +33,28 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                 'id'            => 'entry',
                 'action'        => 'index',
                 'controller'    => 'entry',
+                'pages'         => array(
+                    array(
+                        'action'        => 'get',
+                        'controller'    => 'entry',
+                        'visible'       => false,
+                    ),
+                    array(
+                        'action'        => 'post',
+                        'controller'    => 'entry',
+                        'visible'       => false,
+                    ),
+                    array(
+                        'action'        => 'put',
+                        'controller'    => 'entry',
+                        'visible'       => false,
+                    ),
+                    array(
+                        'action'        => 'delete',
+                        'controller'    => 'entry',
+                        'visible'       => false,
+                    ),
+                ),
             ),
         );
         $resource = new Zend_Application_Resource_Navigation(
