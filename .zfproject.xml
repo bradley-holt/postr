@@ -22,7 +22,6 @@
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Entry"/>
-        <formFile formName="EntryDelete"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
