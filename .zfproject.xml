@@ -30,7 +30,7 @@
           <dbTableFile dbTableName="Entry"/>
           <dbTableFile dbTableName="EntryTag"/>
         </dbTableDirectory>
-        <modelFile modelName="EntryRepository"/>
+        <modelFile modelName="EntryMapper"/>
         <modelFile modelName="EntryPaginatorAdapter"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>

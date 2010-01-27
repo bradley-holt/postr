@@ -8,9 +8,9 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
     private $_testEntry;
 
     /**
-     * @var Postr_Model_EntryRepository
+     * @var Postr_Model_EntryMapper
      */
-    private $_entryRepository;
+    private $_entryMapper;
 
     /**
      * Get Test Entry Params
@@ -41,7 +41,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             ->setUpdated($now)
             ->setPublished($now)
         ;
-        $this->_entryRepository = new Postr_Model_EntryRepository();
+        $this->_entryMapper = new Postr_Model_EntryMapper();
         parent::setUp();
     }
 
@@ -53,16 +53,16 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testIndexActionContainsThreeEntriesAfterPostingThreeEntries()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry');
     	$this->assertQueryCount('.hfeed .hentry', 3);
     }
 
     public function testIndexActionContainsCorrectEntryTitle()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry');
         $this->assertQueryContentContains(
             '.hfeed .hentry .entry-title',
@@ -72,7 +72,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testIndexActionContainsCorrectEntrySummary()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry');
         $this->assertQueryContentContains(
             '.hfeed .hentry .entry-summary',
@@ -82,7 +82,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testIndexActionContainsCorrectEntryUpdated()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry');
         $this->assertQuery(
             '.hfeed .hentry abbr.updated[title="' . $this->_testEntry->getUpdated()->get(Zend_Date::ISO_8601) . '"]'
@@ -95,7 +95,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testIndexActionContainsCorrectEntryPublished()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry');
         $this->assertQuery(
             '.hfeed .hentry abbr.published[title="' . $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601) . '"]'
@@ -108,7 +108,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testNewActionContainsEntryForm()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/new');
         $this->assertQuery(
             'form.entry[method="post"]'
@@ -120,7 +120,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testGetActionContainsCorrectEntryTitle()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
         $this->assertQueryContentContains(
             '.hentry .entry-title',
@@ -130,7 +130,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testGetActionContainsCorrectEntryContent()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
         $this->assertQueryContentContains(
             '.hentry .entry-content',
@@ -140,7 +140,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testGetActionContainsCorrectEntryUpdated()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
         $this->assertQuery(
             '.hentry abbr.updated[title="' . $this->_testEntry->getUpdated()->get(Zend_Date::ISO_8601) . '"]'
@@ -153,7 +153,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testGetActionContainsCorrectEntryPublished()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/get/id/' . $this->_testEntry->getId());
         $this->assertQuery(
             '.hentry abbr.published[title="' . $this->_testEntry->getPublished()->get(Zend_Date::ISO_8601) . '"]'
@@ -172,7 +172,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testEditActionContainsEntryForm()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/edit/id/' . $this->_testEntry->getId());
         $this->assertQuery(
             'form.entry[method="post"]'
@@ -198,7 +198,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         );
         $this->dispatch('/entry/post');
         $id = $this->getRequest()->getParam('id');
-        $postedEntry = $this->_entryRepository->getEntry($id);
+        $postedEntry = $this->_entryMapper->getEntry($id);
         $this->assertTrue(
             $this->_testEntry->isEqualTo(
                 $postedEntry
@@ -208,7 +208,7 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testPutActionRedirectsToGetAction()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->getRequest()->setParams(
             $this->_getTestEntryParams()
         );
@@ -218,13 +218,13 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testPutActionEntryIsCorrect()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->getRequest()->setParams(
             $this->_getTestEntryParams()
         );
         $this->dispatch('/entry/put/id/' . $this->_testEntry->getId());
         $id = $this->getRequest()->getParam('id');
-        $putEntry = $this->_entryRepository->getEntry($id);
+        $putEntry = $this->_entryMapper->getEntry($id);
         $this->assertTrue(
             $this->_testEntry->isEqualTo(
                 $putEntry
@@ -243,17 +243,17 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testDeleteActionRedirectsToIndexAction()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/delete/id/' . $this->_testEntry->getId());
         $this->assertRedirect('/entry');
     }
 
     public function testDeleteActionEntryIsDeleted()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->dispatch('/entry/delete/id/' . $this->_testEntry->getId());
         $id = $this->getRequest()->getParam('id');
-        $deletedEntry = $this->_entryRepository->getEntry($id);
+        $deletedEntry = $this->_entryMapper->getEntry($id);
         $this->assertNull($deletedEntry);
     }
 

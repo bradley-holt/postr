@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Entry Repository
+ * Entry Mapper
  *
  * @category    Postr
  * @package     Postr_Model
  */
-class Postr_Model_EntryRepository
+class Postr_Model_EntryMapper
 {
     /**
      * @var Zend_Db_Table_Abstract
@@ -60,7 +60,7 @@ class Postr_Model_EntryRepository
     }
 
     /**
-     * Construct New Entry Repository
+     * Construct New Entry Mapper
      *
      * @param Zend_Db_Table_Abstract $entryTable
      * @return void
@@ -109,7 +109,7 @@ class Postr_Model_EntryRepository
      * Post Entry
      *
      * @param Postr_Model_Entry $entry
-     * @return Postr_Model_EntryRepository      Provides a fluent interface
+     * @return Postr_Model_EntryMapper          Provides a fluent interface
      */
     public function postEntry(Postr_Model_Entry $entry)
     {
@@ -127,7 +127,7 @@ class Postr_Model_EntryRepository
      * Put Entry
      *
      * @param Postr_Model_Entry $entry
-     * @return Postr_Model_EntryRepository      Provides a fluent interface
+     * @return Postr_Model_EntryMapper          Provides a fluent interface
      */
     public function putEntry(Postr_Model_Entry $entry)
     {
@@ -148,7 +148,7 @@ class Postr_Model_EntryRepository
      * Delete Entry
      *
      * @param Postr_Model_Entry $entry
-     * @return Postr_Model_EntryRepository      Provides a fluent interface
+     * @return Postr_Model_EntryMapper          Provides a fluent interface
      */
     public function deleteEntry(Postr_Model_Entry $entry)
     {

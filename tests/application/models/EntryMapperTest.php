@@ -1,6 +1,6 @@
 <?php
 
-class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
+class Postr_Model_EntryMapperTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var Postr_Model_Entry
@@ -8,9 +8,9 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
     private $_testEntry;
 
     /**
-     * @var Postr_Model_EntryRepository
+     * @var Postr_Model_EntryMapper
      */
-    private $_entryRepository;
+    private $_entryMapper;
 
     public function setUp()
     {
@@ -24,7 +24,7 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
             ->setUpdated($now)
             ->setPublished($now)
         ;
-        $this->_entryRepository = new Postr_Model_EntryRepository();
+        $this->_entryMapper = new Postr_Model_EntryMapper();
         parent::setUp();
     }
 
@@ -36,10 +36,10 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
 
     public function testIndexOfEntriesCountIsThreeAfterPostingThreeEntries()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $entries = $this->_entryRepository->indexOfEntries();
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $entries = $this->_entryMapper->indexOfEntries();
         $this->assertEquals(
             3,
             $entries->getTotalItemCount()
@@ -48,17 +48,17 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
 
     public function testGetEntryIsEqualToPostedEntry()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->assertTrue(
             $this->_testEntry->isEqualTo(
-                $this->_entryRepository->getEntry($this->_testEntry->getId())
+                $this->_entryMapper->getEntry($this->_testEntry->getId())
             )
         );
     }
 
     public function testEntryIdIsGreaterThanZeroAfterEntryIsPosted()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $this->assertGreaterThan(
             0,
             $this->_testEntry->getId()
@@ -68,20 +68,20 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
 
     public function testGetEntryIsEqualToPutEntry()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
+        $this->_entryMapper->postEntry($this->_testEntry);
         $now = new Zend_Date();
         $now->addMonth(1);
-        $entry = $this->_entryRepository->getEntry($this->_testEntry->getId());
+        $entry = $this->_entryMapper->getEntry($this->_testEntry->getId());
         $entry
             ->setTitle('Updated Test Entry')
             ->setContent('Updated Test entry with' . PHP_EOL . 'multiple lines.')
             ->setSummary('Updated Test entry summary.')
             ->setUpdated($now)
         ;
-        $this->_entryRepository->putEntry($entry);
+        $this->_entryMapper->putEntry($entry);
         $this->assertTrue(
             $entry->isEqualTo(
-                $this->_entryRepository->getEntry($entry->getId())
+                $this->_entryMapper->getEntry($entry->getId())
             )
         );
     }
@@ -92,15 +92,15 @@ class Postr_Model_EntryRepositoryTest extends PHPUnit_Framework_TestCase
     public function testPuttingNonExistentEntryThrowsException()
     {
         $this->_testEntry->setId(42);
-        $this->_entryRepository->putEntry($this->_testEntry);
+        $this->_entryMapper->putEntry($this->_testEntry);
     }
 
     public function testDeletedEntryIsNull()
     {
-        $this->_entryRepository->postEntry($this->_testEntry);
-        $entry = $this->_entryRepository->getEntry($this->_testEntry->getId());
-        $this->_entryRepository->deleteEntry($entry);
-        $deletedEntry = $this->_entryRepository->getEntry($entry->getId());
+        $this->_entryMapper->postEntry($this->_testEntry);
+        $entry = $this->_entryMapper->getEntry($this->_testEntry->getId());
+        $this->_entryMapper->deleteEntry($entry);
+        $deletedEntry = $this->_entryMapper->getEntry($entry->getId());
         $this->assertNull($deletedEntry);
     }
 }

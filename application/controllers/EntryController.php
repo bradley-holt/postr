@@ -7,9 +7,9 @@
 class EntryController extends Zend_Controller_Action
 {
     /**
-     * @var Postr_Model_EntryRepository
+     * @var Postr_Model_EntryMapper
      */
-    private $_entryRepository;
+    private $_entryMapper;
 
     /**
      * @var Zend_Controller_Router_Interface
@@ -25,7 +25,7 @@ class EntryController extends Zend_Controller_Action
     {
         $this->_helper->redirector->setPrependBase(false);
         //TODO: Pass these in so that it can be substitued
-        $this->_entryRepository = new Postr_Model_EntryRepository();
+        $this->_entryMapper = new Postr_Model_EntryMapper();
         $this->_router = $this->getFrontController()->getRouter();
         $this->view->headTitle()->prepend('Entry');
     }
@@ -40,7 +40,7 @@ class EntryController extends Zend_Controller_Action
         $page = $this->_getParam('page', 1);
         $count = $this->_getParam('count', 5);
         $this->view->headTitle()->prepend('Index');
-        $entries = $this->_entryRepository->indexOfEntries();
+        $entries = $this->_entryMapper->indexOfEntries();
         $entries
             ->setCurrentPageNumber($page)
             ->setItemCountPerPage($count)
@@ -89,7 +89,7 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $this->view->headTitle()->prepend('Get');
-        $entry = $this->_entryRepository->getEntry($id);
+        $entry = $this->_entryMapper->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
         }
@@ -105,7 +105,7 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $this->view->headTitle()->prepend('Edit');
-        $entry = $this->_entryRepository->getEntry($id);
+        $entry = $this->_entryMapper->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
         }
@@ -160,7 +160,7 @@ class EntryController extends Zend_Controller_Action
                 ->setUpdated($updated)
                 ->setPublished($published)
             ;
-            $this->_entryRepository->postEntry($entry);
+            $this->_entryMapper->postEntry($entry);
             $this->_setParam('id', $entry->getId());
             $this->_redirect(
                 $this->_router->assemble(
@@ -199,7 +199,7 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $this->view->headTitle()->prepend('Put');
-        $entry = $this->_entryRepository->getEntry($id);
+        $entry = $this->_entryMapper->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
         }
@@ -217,7 +217,7 @@ class EntryController extends Zend_Controller_Action
                 ->setUpdated($updated)
                 ->setPublished($published)
             ;
-            $this->_entryRepository->putEntry($entry);
+            $this->_entryMapper->putEntry($entry);
             $this->_redirect(
                 $this->_router->assemble(
                     array(
@@ -256,11 +256,11 @@ class EntryController extends Zend_Controller_Action
     {
         $id = $this->_getParam('id');
         $this->view->headTitle()->prepend('Delete');
-        $entry = $this->_entryRepository->getEntry($id);
+        $entry = $this->_entryMapper->getEntry($id);
         if (null === $entry) {
             throw new Zend_Controller_Dispatcher_Exception();
         }
-        $this->_entryRepository->deleteEntry($entry);
+        $this->_entryMapper->deleteEntry($entry);
         $this->_redirect(
             $this->_router->assemble(
                 array(
