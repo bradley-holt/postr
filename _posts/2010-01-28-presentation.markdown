@@ -7,6 +7,7 @@ January 28, 2010
 
 Examples from a demo blogging application named Postr are used throughout this
 presentation. You can view, download, or fork the demo web application on GitHub:
+
 [http://github.com/bradley-holt/postr](http://github.com/bradley-holt/postr)
 
 Zend_Tool
@@ -205,7 +206,7 @@ See:
 
 ### Load DB Schema
 
-This step is project-specific and not part of Zend_Tool:
+This step is project-specific and not part of `Zend_Tool`:
 
     mkdir -p data/db
     php scripts/load.sqlite.php
@@ -300,5 +301,5 @@ Author: Bradley Holt
 
 Layout & Design: Jason Pelletier
 
-This presenation licensed under a [Creative Commons — Attribution 3.0 United
+This presenation licensed under a [Creative Commons -- Attribution 3.0 United
 States License.](http://creativecommons.org/licenses/by/3.0/us/)
