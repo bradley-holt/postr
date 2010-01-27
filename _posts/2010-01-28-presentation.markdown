@@ -294,6 +294,14 @@ Zend_Navigation
 Controller Plugins
 ------------------
 
+References
+----------
+
+* Bradley Holt's demo application: [Postr](http://github.com/bradley-holt/postr)
+* [Zend Framework Quick Start](http://framework.zend.com/docs/quickstart)
+* Matthew Weier O'Phinney's demo application: [Pastebin](http://github.com/weierophinney/pastebin)
+* Zend Framework [Programmer's Reference Guide](http://framework.zend.com/manual/en/)
+
 Credits
 -------
 
