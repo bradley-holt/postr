@@ -171,10 +171,6 @@ em {
 }
 
 /* FORMS */
-input:focus,
-textarea:focus {
-    background-color: #F9F49A;
-}
 input#title {
     font-size: 2.4em;
 }
