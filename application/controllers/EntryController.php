@@ -148,8 +148,8 @@ class EntryController extends Zend_Controller_Action
         $this->view->headTitle()->prepend('Post');
         if ($entryForm->isValid($this->_getAllParams())) {
             $title = $entryForm->getValue('title');
-            $content = $entryForm->getValue('content');
-            $summary = $entryForm->getValue('summary');
+            $content = $entryForm->getValue('entry_content');
+            $summary = $entryForm->getValue('entry_summary');
             $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::DATETIME_SHORT);
             $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::DATETIME_SHORT);
             $entry = new Postr_Model_Entry();
@@ -206,8 +206,8 @@ class EntryController extends Zend_Controller_Action
         $entryForm = new Postr_Form_Entry();
         if ($entryForm->isValid($this->_getAllParams())) {
             $title = $entryForm->getValue('title');
-            $content = $entryForm->getValue('content');
-            $summary = $entryForm->getValue('summary');
+            $content = $entryForm->getValue('entry_content');
+            $summary = $entryForm->getValue('entry_summary');
             $updated = new Zend_Date($entryForm->getValue('updated'), Zend_Date::DATETIME_SHORT);
             $published = new Zend_Date($entryForm->getValue('published'), Zend_Date::DATETIME_SHORT);
             $entry

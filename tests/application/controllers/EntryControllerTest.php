@@ -20,11 +20,11 @@ class EntryControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
     private function _getTestEntryParams()
     {
         return array(
-            'title'     => $this->_testEntry->getTitle(),
-            'content'   => $this->_testEntry->getContent(),
-            'summary'   => $this->_testEntry->getSummary(),
-            'updated'   => $this->_testEntry->getUpdated()->get(Zend_Date::DATETIME_SHORT),
-            'published' => $this->_testEntry->getPublished()->get(Zend_Date::DATETIME_SHORT),
+            'title'         => $this->_testEntry->getTitle(),
+            'entry_content' => $this->_testEntry->getContent(),
+            'entry_summary' => $this->_testEntry->getSummary(),
+            'updated'       => $this->_testEntry->getUpdated()->get(Zend_Date::DATETIME_SHORT),
+            'published'     => $this->_testEntry->getPublished()->get(Zend_Date::DATETIME_SHORT),
         );
     }
 

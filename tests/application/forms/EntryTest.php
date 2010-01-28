@@ -38,7 +38,7 @@ class Postr_Form_EntryTest extends PHPUnit_Framework_TestCase
 
     public function testContentIsATextareaElement()
     {
-        $element = $this->_entryForm->getElement('content');
+        $element = $this->_entryForm->getElement('entry_content');
         $this->assertType(
             'Zend_Form_Element_Textarea',
             $element
@@ -47,7 +47,7 @@ class Postr_Form_EntryTest extends PHPUnit_Framework_TestCase
 
     public function testContentElementHasCorrectLabel()
     {
-        $element = $this->_entryForm->getElement('content');
+        $element = $this->_entryForm->getElement('entry_content');
         $this->assertEquals(
             'Content',
             $element->getLabel()
@@ -56,7 +56,7 @@ class Postr_Form_EntryTest extends PHPUnit_Framework_TestCase
 
     public function testSummaryIsATextareaElement()
     {
-        $element = $this->_entryForm->getElement('summary');
+        $element = $this->_entryForm->getElement('entry_summary');
         $this->assertType(
             'Zend_Form_Element_Textarea',
             $element
@@ -65,7 +65,7 @@ class Postr_Form_EntryTest extends PHPUnit_Framework_TestCase
 
     public function testSummaryElementHasCorrectLabel()
     {
-        $element = $this->_entryForm->getElement('summary');
+        $element = $this->_entryForm->getElement('entry_summary');
         $this->assertEquals(
             'Summary',
             $element->getLabel()
