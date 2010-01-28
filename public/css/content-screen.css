@@ -1,0 +1,305 @@
+@charset "UTF-8";
+/**
+ * CSS for content elements.
+ *
+ * @copyright  Copyright (c) 2005-2009 Found Line, Inc. (http://www.foundline.com/)
+ * @version    $Id: content-screen.css 65 2009-03-01 03:23:02Z jason.pelletier $
+ */
+
+h1,
+h2,
+h3,
+h4,
+p,
+q,
+cite,
+abbr,
+pre,
+ul,
+ol,
+dl,
+th,
+td,
+input,
+textarea {
+    line-height: 1.2;
+    color: #444;
+}
+h1,
+h2,
+h3,
+h4 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+h1 {
+    margin-top: 0.8em;
+    font-size: 5.0em;
+}
+h1,
+h1 a {
+    color: #DDD;
+    text-decoration: none;
+}
+    h1 a:hover,
+    h1 a:focus {
+        color: #CCC;
+    }
+h2 {
+    margin-top: 2.0em;
+    font-size: 2.4em;
+}
+h3 {
+    margin-top: 2.0em;
+    font-size: 1.6em;
+}
+h4 {
+    margin-top: 1.6em;
+    font-size: 1.2em;
+}
+p,
+abbr,
+pre,
+ul,
+ol,
+dl,
+table,
+input,
+textarea {
+    margin-top: 1.0em;
+}
+ul ul,
+ol ol,
+dl dl {
+    margin-top: 0;
+}
+p,
+pre,
+li,
+dt,
+dd,
+table,
+input,
+textarea {
+    font-size: 1.2em;
+}
+li li {
+    font-size: 1.0em;
+}
+li,
+dt,
+dd {
+    margin-top: 0.1em;
+}
+dt {
+    margin-top: 1.0em;
+    font-size: 1.0em;
+    font-style: italic;
+}
+body.action-index dt,
+body.action-get dt {
+    color: #888;
+}
+dl dl dt {
+    margin-top: 0.5em;
+}
+dd input,
+dd textarea {
+    margin-top: 0;
+}
+table {
+    width: 100%;
+    border: 1px solid #BBB;
+}
+th,
+td {
+    padding: 6px;
+}
+th {
+    background-color: #DDD;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+tr td {
+    background-color: white;
+}
+tr:nth-child(even) td {
+    background-color: #EEE;
+}
+th.action,
+td.action {
+    width: 2.5em;
+}
+pre {
+    margin: 0 -0.5em;
+    padding: 0.5em;
+    border: 1px solid #333;
+    overflow: auto;
+}
+li {
+    margin-left: 2.0em;
+    list-style-position: outside;
+}
+ul li {
+    list-style: disc;
+}
+ol li {
+    list-style: decimal;
+}
+input,
+textarea {
+    line-height: 1.0;
+}
+input[type="text"],
+textarea {
+    width: 670px;
+}
+td ul,
+td li,
+td p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+.hidden {
+    display: none;
+}
+
+/* FORMS */
+input:focus,
+textarea:focus {
+    background-color: #F9F49A;
+}
+input#title {
+    font-size: 2.4em;
+}
+input#updated,
+input#published {
+    width: 215px;
+}
+
+/* BUTTON */
+ul.actions {
+    margin-top: 1.5em;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #EFEFEF;
+}
+ul.actions li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 1.0em;
+    list-style: none;
+}
+a.button,
+input.button {
+    display: inline;
+    margin: 0;
+    padding: 0.4em 0.4em 0.3em;
+    background-color: #999;
+    border: 1px solid #999;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 1.2em;
+    line-height: 1.5;
+    white-space: nowrap;
+    color: white;
+    text-decoration: none;
+}
+input.button {
+   padding: 0.3em 0.2em 0.2em; 
+}
+a.button:hover,
+a.button:focus,
+input.button:hover,
+input.button:focus {
+    background-color: #666;
+    border-color: #666;
+    text-decoration: none;
+}
+a.button:active,
+input.button:active {
+    background-color: #555;
+    border-color: #555;
+    text-decoration: none;
+}
+a.button.deter,
+input.button.deter {
+    background-color: transparent;
+    border-color: transparent;
+    color: #999;
+}
+a.button.deter:hover,
+a.button.deter:focus,
+input.button.deter:hover,
+input.button.deter:focus {
+    color: #666;
+}
+a.button.deter:active,
+input.button.deter:active {
+    color: #555;
+}
+
+/* PAGINATOR */
+.paginator {
+    margin-top: 2.0em;
+}
+.paginator ul {
+    margin-top: 4px;
+}
+.paginator p,
+.paginator .navigation li {
+    font-size: 1.3em;
+}
+.paginator .navigation li {
+    margin: 0 4px 0 0;
+}
+.paginator p,
+.paginator .navigation li a.current {
+    font-weight: bold;
+}
+.paginator .navigation li a {
+    display: inline;
+    margin: 0 0.4em 0 0;
+    padding: 0;
+    text-decoration: underline;
+}
+.paginator .navigation li a.inactive,
+.paginator .navigation li a.inactive:hover,
+.paginator .navigation li a.inactive:focus {
+    color: #AAA;
+    text-decoration: none;
+}
+.paginator .navigation li a.current {
+    color: black;
+}
+
+/* HENTRY */
+body.action-index .hentry {
+    margin: 0 -10px;
+    padding: 0 10px 15px;
+    border-bottom: 1px solid #CCC;
+}
+.hentry .entry-summary p,
+.hentry .entry-content p {
+    font-size: 1.6em;
+}
+
+/* FOOTER */
+#footer .credit.zend-framework {
+    width: 127px;
+    height: 25px;
+    display: block;
+    overflow: hidden;
+    background: transparent url('../images/PoweredBy_ZF_4LightBG.png') no-repeat 0 0;
+    text-indent: -999em;
+}

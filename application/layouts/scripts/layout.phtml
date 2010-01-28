@@ -5,19 +5,23 @@
 <?= $this->headMeta() ?>
 <?= $this->headLink()
         ->appendStylesheet($this->baseUrl('/css/reset-all.css'), 'all')
+        ->appendStylesheet($this->baseUrl('/css/layout-screen.css'), 'screen')
+        ->appendStylesheet($this->baseUrl('/css/content-screen.css'), 'screen')
 ?>
 <?= $this->headScript() ?>
 </head>
 <body<?= 0 != count($this->routeContext) ? ' class="' . implode(' ', array_unique($this->routeContext)) . '"' : '' ?>>
-<h1>Postr</h1>
-<div id="content">
+<div id="page">
+    <h1><a href="/">Postr</a></h1>
+    <div id="content">
 <?= $this->layout()->content; ?>
-</div>
-<div id="header">
+        <div id="header">
 <?= $this->render('header.phtml') ?>
-</div>
-<div id="footer">
+        </div>
+        <div id="footer">
 <?= $this->render('footer.phtml') ?>
+        </div>
+    </div>
 </div>
 </body>
 </html>

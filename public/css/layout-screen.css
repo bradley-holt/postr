@@ -1,0 +1,156 @@
+@charset "UTF-8";
+/**
+ * CSS for layout elements.
+ *
+ * @copyright  Copyright (c) 2005-2009 Found Line, Inc. (http://www.foundline.com/)
+ * @version    $Id: layout-screen.css 65 2009-03-01 03:23:02Z jason.pelletier $
+ */
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 62.5%;
+    color: black;
+    text-align: center;
+    -webkit-text-size-adjust: none;
+}
+body,
+#header {
+    background-color: #EEE;
+}
+#page {
+    position: relative;
+    width: 980px;
+    margin: 0 auto 50px;
+}
+#content,
+#header,
+#footer {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+#content,
+#footer {
+    background-color: white;
+}
+    #content .inner,
+    #header .inner,
+    #footer .inner {
+        position: relative;
+        margin: 0 20px;
+    }
+    #content .inner {
+    }
+#content {
+    overflow: hidden;
+    padding-top: 25px;
+    font-size: 1.0em;
+    line-height: 1.2;
+}
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+    #header ul.navigation,
+    #header ul.navigation ul {
+        margin-top: 0;
+    }
+    #header ul.navigation {
+        margin: 0 -15px;
+    }
+    #header ul.navigation li a {
+        display: inline-block;
+        margin: 0 4px;
+        padding: 0.3em 10px 0;
+        background-color: #BBB;
+        border: 1px solid #BBB;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-topright: 5px;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+        #header ul.navigation li a:hover,
+        #header ul.navigation li a:focus {
+            background-color: #999;
+            border-color: #999;
+        }
+        #header ul.navigation li.active a {
+            background-color: white;
+            border-color: white;
+            color: #999;
+        }
+            #header ul.navigation ul {
+                position: absolute;
+                display: none;
+                padding: 0 4px;
+            }
+                #header ul.navigation li:hover ul {
+                    display: block;
+                }
+            #header ul.navigation ul a {
+                margin: 0;
+                border-radius: 0;
+                -moz-border-radius: 0;
+                -webkit-border-radius: 0;
+                font-size: 1.2em;
+                font-weight: normal;
+            }
+            #header ul.navigation ul li.active a {
+                font-weight: bold;
+            }
+#footer {
+    overflow: hidden;
+    clear: both;
+}
+    #footer .inner {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+#textile-quickref {
+    position: relative;
+    width: 180px;
+    float: right;
+    clear: none;
+    margin-top: 85px;
+    margin-right: 20px;
+    padding: 0 20px 25px;
+    background-color: #DDD;
+}
+    body.action-new #content .inner,
+    body.action-edit #content .inner {
+        width: 700px;
+        float: left;
+    }
+
+/* LINKS */
+a {
+    color: blue;
+    text-decoration: underline;
+}
+a:hover,
+a:focus {
+    color: orange;
+}
+
+/* NAVIGATION */
+ul.navigation li,
+ul.navigation ul {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 0;
+    font-size: 1.0em;
+    list-style: none;
+}
+ul.navigation li li {
+    margin-top: 0;
+}
+ul.navigation li a {
+    white-space: nowrap;
+}

@@ -14,6 +14,7 @@ class Postr_Form_Entry extends Zend_Form
         $titleElement = new Zend_Form_Element_Text('title');
         $titleElement
             ->setLabel('Title')
+            ->setAttrib('autofocus', '')
             ->setRequired(true)
             ->addValidator('StringLength', false, array(0, 255))
         ;
@@ -44,6 +45,7 @@ class Postr_Form_Entry extends Zend_Form
         $submitElement = new Zend_Form_Element_Submit('submit');
         $submitElement
             ->setLabel('Submit')
+            ->setAttrib('class', 'button')
         ;
         $this->addElement($submitElement);
     }

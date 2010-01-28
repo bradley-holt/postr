@@ -1,61 +1,64 @@
 <?
 /* @var $entry Postr_Model_Entry */
 ?>
-<h2>Index of Entries</h2>
-<div class="hfeed">
+<div class="inner">
+    <h2>Index of Entries</h2>
+    <div class="hfeed">
 <? foreach ($this->entries as $entry): ?>
-    <div class="hentry">
-        <h3 class="entry-title">
-            <a
-                href="<?= $this->url(
-                    array(
-                        'action'        => 'get',
-                        'controller'    => 'entry',
-                        'id'            => $entry->getId(),
-                    ),
-                    null,
-                    true
-                ) ?>"
-                title="Permalink to <?= $this->escape($entry->getTitle()) ?>"
-                rel="bookmark"
-            ><?= $this->escape($entry->getTitle()) ?></a></h3>
-        <div class="entry-date">
-            <abbr
-                class="published"
-                title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
-            ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
-        </div>
-        <div class="entry-summary"><?= $entry->getSummary(true) ?></div>
-        <dl class="entry-meta">
-            <dt>By</dt>
-            <dd><span class="author vcard">
+        <div class="hentry">
+            <h3 class="entry-title">
                 <a
-                    class="url fn n"
-                    href="<?= $this->url(array(), null, true) ?>"
-                >Anonymous</a></span></dd>
-            <dt>Updated on</dt>
-            <dd><abbr
-                class="updated"
-                title="<?= $this->escape($entry->getUpdated()->get(Zend_Date::ISO_8601)) ?>"
-            ><?= $this->escape($entry->getUpdated()->get(Zend_Date::DATETIME_SHORT)) ?></abbr></dd>
-            <dt>Tagged</dt>
-            <dd>
-                <ul>
-                    <li><a 
-                        href="<?= $this->url(
-                            array(
-                                'controller'    => 'tag',
-                                'action'        => 'get',
-                                'id'            => 'foo',
-                            ),
-                            null,
-                            true
-                        ) ?>"
-                        rel="tag">foo</a>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
+                    href="<?= $this->url(
+                        array(
+                            'action'        => 'get',
+                            'controller'    => 'entry',
+                            'id'            => $entry->getId(),
+                        ),
+                        null,
+                        true
+                    ) ?>"
+                    title="Permalink to <?= $this->escape($entry->getTitle()) ?>"
+                    rel="bookmark"
+                ><?= $this->escape($entry->getTitle()) ?></a></h3>
+            <div class="entry-date">
+                <abbr
+                    class="published"
+                    title="<?= $this->escape($entry->getPublished()->get(Zend_Date::ISO_8601)) ?>"
+                ><?= $this->escape($entry->getPublished()->get(Zend_Date::DATETIME_SHORT)) ?></abbr>
+            </div>
+            <div class="entry-summary"><?= $entry->getSummary(true) ?></div>
+            <dl class="entry-meta">
+                <dt>By</dt>
+                <dd><span class="author vcard">
+                    <a
+                        class="url fn n"
+                        href="<?= $this->url(array(), null, true) ?>"
+                    >Anonymous</a></span></dd>
+                <dt>Updated on</dt>
+                <dd><abbr
+                    class="updated"
+                    title="<?= $this->escape($entry->getUpdated()->get(Zend_Date::ISO_8601)) ?>"
+                ><?= $this->escape($entry->getUpdated()->get(Zend_Date::DATETIME_SHORT)) ?></abbr></dd>
+                <dt>Tagged</dt>
+                <dd>
+                    <ul>
+                        <li><a 
+                            href="<?= $this->url(
+                                array(
+                                    'controller'    => 'tag',
+                                    'action'        => 'get',
+                                    'id'            => 'foo',
+                                ),
+                                null,
+                                true
+                            ) ?>"
+                            rel="tag">foo</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
 <? endforeach; ?>
-</div>
+    </div>
 <?= $this->paginationControl($this->entries) ?>
+</div>
