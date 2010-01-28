@@ -126,11 +126,11 @@ class EntryController extends Zend_Controller_Action
             )
             ->populate(
                 array(
-                    'title'     => $entry->getTitle(),
-                    'content'   => $entry->getContent(),
-                    'summary'   => $entry->getSummary(),
-                    'updated'   => $now->get(Zend_Date::DATETIME_SHORT),
-                    'published' => $entry->getPublished()->get(Zend_Date::DATETIME_SHORT),
+                    'title'         => $entry->getTitle(),
+                    'entry_content' => $entry->getContent(),
+                    'entry_summary' => $entry->getSummary(),
+                    'updated'       => $now->get(Zend_Date::DATETIME_SHORT),
+                    'published'     => $entry->getPublished()->get(Zend_Date::DATETIME_SHORT),
                 )
             )
         ;
