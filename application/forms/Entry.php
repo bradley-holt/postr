@@ -18,16 +18,16 @@ class Postr_Form_Entry extends Zend_Form
             ->addValidator('StringLength', false, array(0, 255))
         ;
         $this->addElement($titleElement);
-        $contentElement = new Zend_Form_Element_Textarea('content');
-        $contentElement
+        $entryContentElement = new Zend_Form_Element_Textarea('entry_content');
+        $entryContentElement
             ->setLabel('Content')
         ;
-        $this->addElement($contentElement);
-        $summaryElement = new Zend_Form_Element_Textarea('summary');
-        $summaryElement
+        $this->addElement($entryContentElement);
+        $entrySummaryElement = new Zend_Form_Element_Textarea('entry_summary');
+        $entrySummaryElement
             ->setLabel('Summary')
         ;
-        $this->addElement($summaryElement);
+        $this->addElement($entrySummaryElement);
         $updatedElement = new Zend_Form_Element_Text('updated');
         $updatedElement
             ->setLabel('Updated')
