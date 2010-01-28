@@ -12,7 +12,7 @@ presentation. You can view, download, or fork the demo web application on GitHub
 
 Markdown text of this presentation can be found here:
 
-http://github.com/bradley-holt/postr/blob/gh-pages/_posts/2010-01-28-presentation.markdown
+[http://github.com/bradley-holt/postr/blob/gh-pages/_posts/2010-01-28-presentation.markdown](http://github.com/bradley-holt/postr/blob/gh-pages/_posts/2010-01-28-presentation.markdown)
 
 Zend_Tool
 ---------
