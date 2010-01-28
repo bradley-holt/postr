@@ -13,15 +13,19 @@ presentation. You can view, download, or fork the demo web application on GitHub
 Zend_Tool
 ---------
 
-Automated scaffolding of project and project components
+* Automated scaffolding of project and project components
+* Used in creating the demo application, Postr
+* Referenced throughout this presentation
 
-### Create a Project
+Create a Project
+----------------
 
     mkdir postr
     cd postr
     zf create project .
 
-### Project Structure Created
+Project Structure Created
+-------------------------
 
     .zfproject.xml
     application/
@@ -47,11 +51,54 @@ Automated scaffolding of project and project components
             bootstrap.php
         phpunit.xml
 
-### Name the Project
+Front Controller
+----------------
+
+* All HTTP requests for the application go through one script.
+* Apache's rewrite module (or equivalent) makes this happen.
+
+See:
+
+* [Front Controller pattern](http://en.wikipedia.org/wiki/Front_Controller_pattern)
+* [`public/index.php`](http://github.com/bradley-holt/postr/blob/master/public/index.php)
+* [`public/.htaccess`](http://github.com/bradley-holt/postr/blob/master/public/.htaccess)
+
+Zend_Application
+----------------
+
+* Bootstraps the application
+* Provides reusable resources
+* Sets up PHP environment
+
+See:
+
+* [Zend_Application](http://framework.zend.com/manual/en/zend.application.html)
+* [`application/Bootstrap.php`](http://github.com/bradley-holt/postr/blob/master/application/Bootstrap.php)
+
+Configuration
+-------------
+
+* Default configuration is in `application/configs/application.ini`
+* Allows for configuration sections; for example:
+ * production
+ * staging
+ * testing
+ * development
+* Sections can inherit from other sections
+
+See:
+
+* [`application/configs/application.ini`](http://github.com/bradley-holt/postr/blob/master/application/configs/application.ini)
+
+Name the Project
+----------------
+
+* Default application class name prefix is `Application_`.
 
     zf change application.class-name-prefix Postr_
 
-### Updated Configuration
+Updated Configuration
+---------------------
 
 Added to `application/configs/application.ini`:
 
@@ -62,11 +109,42 @@ See:
 
 * [`application/configs/application.ini`](http://github.com/bradley-holt/postr/blob/master/application/configs/application.ini)
 
-### Enably Layout
+Model–View–Controller (MVC)
+---------------------------
+
+* Composite of several design patterns
+* Isolates domain logic from input and presentation
+* Model: domain logic
+* View: presentation layer
+* Controller: interprets input and passes it to the Model; provides Model data to the View 
+
+See:
+
+* [Model–view–controller](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+* [`application/models/`](http://github.com/bradley-holt/postr/tree/master/application/models/)
+* [`application/views/`](http://github.com/bradley-holt/postr/tree/master/application/views/)
+* [`application/controllers/`](http://github.com/bradley-holt/postr/tree/master/application/controllers/)
+
+
+Zend_Layout
+-----------
+
+* Implementation of the Two Step View pattern
+* Allows for consistent layout across multiple pages
+* Easier to manage than "includes"
+
+See:
+
+* [Zend_Layout](http://framework.zend.com/manual/en/zend.layout.html)
+* [Two Step View](http://martinfowler.com/eaaCatalog/twoStepView.html)
+
+Enable Layout
+-------------
 
     zf enable layout
     
-### Layout View Script Created
+Layout View Script
+------------------
 
     application/
         layouts/
@@ -83,11 +161,30 @@ See:
 * [`application/layouts/scripts/layout.phtml`](http://github.com/bradley-holt/postr/blob/master/application/layouts/scripts/layout.phtml)
 * [`application/configs/application.ini`](http://github.com/bradley-holt/postr/blob/master/application/configs/application.ini)
 
-### Create a Controller
+Controllers
+-----------
+
+* Connects the Model and the View
+* Contains one or more actions
+* URL based routing typically decides what controller and action to execute:
+    :controller/:action
+* Custom routing options available
+
+View Scripts
+------------
+
+* PHP templates
+* No domain logic please!
+* Default suffix of `.phtml`
+* One view script per controller action (by default)
+
+Create a Controller
+-------------------
 
     zf create controller Entry
 
-### Controller Created
+Entry Controller and View Script
+--------------------------------
 
     application/
         controllers/
@@ -107,7 +204,8 @@ See:
 * [`application/views/scripts/entry/index.phtml`](http://github.com/bradley-holt/postr/blob/master/application/views/scripts/entry/index.phtml)
 * [`tests/application/controllers/EntryControllerTest.php`](http://github.com/bradley-holt/postr/blob/master/tests/application/controllers/EntryControllerTest.php)
 
-### Create Controller Actions
+Create Additionl Controller Actions
+-----------------------------------
 
     zf create action new Entry
     zf create action get Entry
@@ -116,7 +214,8 @@ See:
     zf create action put Entry
     zf create action delete Entry
 
-### Controller Actions Created
+Entry Actions
+-------------
 
 Methods added to `application/controllers/EntryController.php`:
 
@@ -145,11 +244,35 @@ See:
 * [`application/controllers/EntryController.php`](http://github.com/bradley-holt/postr/blob/master/application/controllers/EntryController.php)
 * [`application/views/scripts/entry/`](http://github.com/bradley-holt/postr/tree/master/application/views/scripts/entry/)
 
-### Create a Model
+Zend_Test
+---------
+
+* Functional (end-to-end) testing of controllers
+* Simulates HTTP requests to the application
+* No web server required 
+* Also provides a DB testing facility
+
+See:
+
+* [Zend_Test](http://framework.zend.com/manual/en/zend.test.html)
+* [Functional Test](http://c2.com/cgi/wiki?FunctionalTest)
+* [`tests/application/controllers/EntryControllerTest.php`](http://github.com/bradley-holt/postr/blob/master/tests/application/controllers/EntryControllerTest.php)
+
+Models
+------
+
+* Models are specific to your domain
+* No such thing as one-size-fits all models
+* No Zend_Model
+* However, some useful patterns have emerged
+
+Create a Model
+--------------
 
     zf create model Entry
 
-### Model Created
+Entry Model
+-----------
 
     application/
         models/
@@ -159,11 +282,27 @@ See:
 
 * [`application/models/Entry.php`](http://github.com/bradley-holt/postr/blob/master/application/models/Entry.php)
 
-### Create a Form
+Zend_Form
+---------
+
+* Input filtering
+* Input validation
+* Form and element rendering
+* Huge time saver
+
+See:
+
+* [Zend_Form](http://framework.zend.com/manual/en/zend.form.html)
+* [Zend_Filter](http://framework.zend.com/manual/en/zend.filter.html)
+* [Zend_Validate](http://framework.zend.com/manual/en/zend.validate.html)
+
+Create a Form
+-------------
 
     zf create form Entry
 
-### Form Created
+Entry Form
+----------
 
     application/
         forms/
@@ -173,14 +312,27 @@ See:
 
 * [`application/forms/Entry.php`](http://github.com/bradley-holt/postr/blob/master/application/forms/Entry.php)
 
-### Configure a DB Adapter
+Zend_Db_Table
+-------------
+
+* Object-oriented database interface
+* Implements the Table Data Gateway and Row Data Gateway patterns
+
+See:
+
+* [Table Data Gateway](http://www.martinfowler.com/eaaCatalog/tableDataGateway.html)
+* [Row Data Gateway](http://www.martinfowler.com/eaaCatalog/rowDataGateway.html)
+
+Configure a DB Adapter
+----------------------
 
     zf configure dbadapter "adapter=Pdo_Sqlite&dbname=../data/db/production.db"
     zf configure dbadapter "adapter=Pdo_Sqlite&dbname=../data/db/staging.db" -s staging
     zf configure dbadapter "adapter=Pdo_Sqlite&dbname=../data/db/testing.db" -s testing
     zf configure dbadapter "adapter=Pdo_Sqlite&dbname=../data/db/development.db" -s development
 
-### Updated Configuration
+Updated Configuration
+---------------------
 
 Added to `application/configs/application.ini`:
 
@@ -204,9 +356,10 @@ See:
 
 * [`application/configs/application.ini`](http://github.com/bradley-holt/postr/blob/master/application/configs/application.ini)
 
-### Load DB Schema
+Load DB Schema
+--------------
 
-This step is project-specific and not part of `Zend_Tool`:
+Project-specific and not built-in to Zend Framework:
 
     mkdir -p data/db
     php scripts/load.sqlite.php
@@ -216,11 +369,13 @@ See:
 * [`scripts/load.sqlite.php`](http://github.com/bradley-holt/postr/blob/master/scripts/load.sqlite.php)
 * [`scripts/schema.sqlite.sql`](http://github.com/bradley-holt/postr/blob/master/scripts/schema.sqlite.sql)
 
-### Create DB Table from the Database
+Create DB Tables from the Database
+----------------------------------
 
     zf create dbtable.from-database
 
-### DB Table Created
+Entry and Entry Tag DB Tables
+-----------------------------
 
     application/
         models/
@@ -233,11 +388,23 @@ See:
 * [`application/models/DbTable/Entry.php`](http://github.com/bradley-holt/postr/blob/master/application/models/DbTable/Entry.php)
 * [`application/models/DbTable/EntryTag.php`](http://github.com/bradley-holt/postr/blob/master/application/models/DbTable/EntryTag.php)
 
-### Create a Data Mapper
+Data Mapper
+-----------
+
+* Keeps your domain logic isolated from your database implementation
+* Domain objects should not directly use Data Mappers
+
+See:
+
+* [Data Mapper](http://martinfowler.com/eaaCatalog/dataMapper.html)
+
+Create a Data Mapper
+--------------------
 
     zf create model EntryMapper
 
-### Data Mapper Created
+Entry Mapper
+------------
 
     application/
         models/
@@ -247,11 +414,29 @@ See:
 
 * [`application/models/EntryMapper.php`](http://github.com/bradley-holt/postr/blob/master/application/models/EntryMapper.php)
 
-### Create a Paginator Adapter
+Zend_Paginator
+--------------
+
+* Pagination for database or any arbitrary data
+* Several adapters available:
+ * Array
+ * DbSelect
+ * DbTableSelect
+ * Iterator
+ * Null
+ * Write your own in order to paginate domain objects
+
+See:
+
+* [Zend_Paginator](http://framework.zend.com/manual/en/zend.paginator.html)
+
+Create a Paginator Adapter
+--------------------------
 
     zf create model EntryPaginatorAdapter
 
-### Paginator Adapter Created
+Entry Paginator Adapter
+-----------------------
 
     application/
         models/
@@ -261,38 +446,64 @@ See:
 
 * [`application/models/EntryPaginatorAdapter.php`](http://github.com/bradley-holt/postr/blob/master/application/models/EntryPaginatorAdapter.php)
 
-Zend_Application
-----------------
-
-Model-View-Controller (MVC)
----------------------------
-
-Zend_Layout
------------
-
-Zend_Test
----------
-
-Zend_Form
----------
-
 Zend_Date
 ---------
 
-Zend_Db_Table
--------------
+* Manipulate dates and times
+* Useful for date and time calculations
+* Allows for input from and output to various formats
+* Used as a domain object in the Postr demo application:
+ * Entry Updated
+ * Entry Published
+
+See:
+
+* [Zend_Date](http://framework.zend.com/manual/en/zend.date.html)
+* [`application/models/Entry.php`](http://github.com/bradley-holt/postr/blob/master/application/models/Entry.php)
 
 Zend_Markup
 -----------
 
-Zend_Paginator
---------------
+* Renders BBcode or Textile markup into HTML or other formats
+* Extensible so may see other markup languages in the future
+* Used in the Postr demo application:
+ * Entry Content and Entry Summary are stored as Textile markup
+ * Entry Content and Entry Summary can optionally be retrieved as HTML
+
+See:
+
+* [Zend_Markup](http://framework.zend.com/manual/en/zend.markup.html)
+* [BBCode](http://en.wikipedia.org/wiki/BBCode)
+* [Textile](http://en.wikipedia.org/wiki/Textile_%28markup_language%29)
+* [`application/models/Entry.php`](http://github.com/bradley-holt/postr/blob/master/application/models/Entry.php)
 
 Zend_Navigation
 ---------------
 
+* Create menus, breadcrumbs, links, and sitemaps
+* Used to create the menu navigation in the Postr demo application
+
+See:
+
+* [Zend_Navigation](http://framework.zend.com/manual/en/zend.navigation.html)
+* [`application/Bootstrap.php`](http://github.com/bradley-holt/postr/blob/master/application/Bootstrap.php)
+* [`application/layouts/scripts/header.phtml`](http://github.com/bradley-holt/postr/blob/master/application/layouts/scripts/header.phtml)
+
 Controller Plugins
 ------------------
+
+* Allows developers to hook into various events during the controller process:
+ * `routeStartup()`
+ * `dispatchLoopStartup()`
+ * `preDispatch()`
+ * `postDispatch()`
+ * `dispatchLoopShutdown()`
+ * `routeShutdown()`
+
+See:
+
+* [Controller Plugins](http://framework.zend.com/manual/en/zend.controller.plugins.html)
+* [`application/plugins/RouteContext.php`](http://github.com/bradley-holt/postr/blob/master/application/plugins/RouteContext.php)
 
 References
 ----------
