@@ -24,8 +24,8 @@ Create a Project
     cd postr
     zf create project .
 
-Project Structure Created
--------------------------
+Project Structure
+-----------------
 
     .zfproject.xml
     application/
@@ -80,10 +80,10 @@ Configuration
 
 * Default configuration is in `application/configs/application.ini`
 * Allows for configuration sections; for example:
- * production
- * staging
- * testing
- * development
+  * production
+  * staging
+  * testing
+  * development
 * Sections can inherit from other sections
 
 See:
@@ -93,7 +93,7 @@ See:
 Name the Project
 ----------------
 
-* Default application class name prefix is `Application_`.
+Default application class name prefix is `Application_`.
 
     zf change application.class-name-prefix Postr_
 
@@ -109,7 +109,7 @@ See:
 
 * [`application/configs/application.ini`](http://github.com/bradley-holt/postr/blob/master/application/configs/application.ini)
 
-Model–View–Controller (MVC)
+Model-View-Controller (MVC)
 ---------------------------
 
 * Composite of several design patterns
@@ -120,7 +120,7 @@ Model–View–Controller (MVC)
 
 See:
 
-* [Model–view–controller](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+* [Model-view-controller](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 * [`application/models/`](http://github.com/bradley-holt/postr/tree/master/application/models/)
 * [`application/views/`](http://github.com/bradley-holt/postr/tree/master/application/views/)
 * [`application/controllers/`](http://github.com/bradley-holt/postr/tree/master/application/controllers/)
@@ -167,7 +167,7 @@ Controllers
 * Connects the Model and the View
 * Contains one or more actions
 * URL based routing typically decides what controller and action to execute:
-    :controller/:action
+  `:controller/:action`
 * Custom routing options available
 
 View Scripts
@@ -392,7 +392,7 @@ Data Mapper
 -----------
 
 * Keeps your domain logic isolated from your database implementation
-* Domain objects should not directly use Data Mappers
+* Domain objects should not directly use data mappers
 
 See:
 
@@ -419,12 +419,12 @@ Zend_Paginator
 
 * Pagination for database or any arbitrary data
 * Several adapters available:
- * Array
- * DbSelect
- * DbTableSelect
- * Iterator
- * Null
- * Write your own in order to paginate domain objects
+  * Array
+  * DbSelect
+  * DbTableSelect
+  * Iterator
+  * Null
+  * Write your own in order to paginate domain objects
 
 See:
 
@@ -453,8 +453,8 @@ Zend_Date
 * Useful for date and time calculations
 * Allows for input from and output to various formats
 * Used as a domain object in the Postr demo application:
- * Entry Updated
- * Entry Published
+  * Entry Updated
+  * Entry Published
 
 See:
 
@@ -467,8 +467,8 @@ Zend_Markup
 * Renders BBcode or Textile markup into HTML or other formats
 * Extensible so may see other markup languages in the future
 * Used in the Postr demo application:
- * Entry Content and Entry Summary are stored as Textile markup
- * Entry Content and Entry Summary can optionally be retrieved as HTML
+  * Entry Content and Entry Summary are stored as Textile markup
+  * Entry Content and Entry Summary can optionally be retrieved as HTML
 
 See:
 
@@ -493,12 +493,12 @@ Controller Plugins
 ------------------
 
 * Allows developers to hook into various events during the controller process:
- * `routeStartup()`
- * `dispatchLoopStartup()`
- * `preDispatch()`
- * `postDispatch()`
- * `dispatchLoopShutdown()`
- * `routeShutdown()`
+  * `routeStartup()`
+  * `dispatchLoopStartup()`
+  * `preDispatch()`
+  * `postDispatch()`
+  * `dispatchLoopShutdown()`
+  * `routeShutdown()`
 
 See:
 
