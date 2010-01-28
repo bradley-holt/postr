@@ -208,8 +208,8 @@ See:
 * [`application/views/scripts/entry/index.phtml`](http://github.com/bradley-holt/postr/blob/master/application/views/scripts/entry/index.phtml)
 * [`tests/application/controllers/EntryControllerTest.php`](http://github.com/bradley-holt/postr/blob/master/tests/application/controllers/EntryControllerTest.php)
 
-Create Additionl Controller Actions
------------------------------------
+Create Additional Controller Actions
+------------------------------------
 
     zf create action new Entry
     zf create action get Entry
