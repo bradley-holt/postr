@@ -28,6 +28,11 @@ sources:
 Once Zend Framework is installed, configure your server's document root to be
 the "public" directory within this application.
 
+To setup the SQLite database:
+
+    cd scripts
+    php load.sqlite.php
+
 REQUESTS
 ========
 
